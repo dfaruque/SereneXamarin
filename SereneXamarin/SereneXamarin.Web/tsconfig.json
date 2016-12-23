@@ -1,0 +1,15 @@
+﻿{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "preserveConstEnums": true,
+        "experimentalDecorators": true,
+        "declaration": true,
+        "emitBOM": true,
+        "sourceMap": true,
+        "outFile": "Scripts/site/SereneXamarin.Web.js",
+        "target": "es5"
+    },
+    "exclude": [
+        "Scripts/site/SereneXamarin.Web.d.ts"
+    ]
+}
