@@ -29,7 +29,7 @@
                 if (!ConfigurationManager.AppSettings["ActiveDirectory"].IsTrimmedEmpty())
                     registrar.RegisterInstance<IDirectoryService>(new ActiveDirectoryService());
 
-                InitializeExceptionLog();
+                //InitializeExceptionLog();
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@
 
             foreach (var databaseKey in databaseKeys)
             {
-                EnsureDatabase(databaseKey);
+                //EnsureDatabase(databaseKey);
                 RunMigrations(databaseKey);
             }
         }

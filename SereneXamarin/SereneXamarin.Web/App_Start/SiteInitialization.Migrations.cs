@@ -117,18 +117,20 @@
 
             // safety check to ensure that we are not modifying an arbitrary database.
             // remove these lines if you want SereneXamarin migrations to run on your DB.
-            if (!isOracle && cs.ConnectionString.IndexOf(typeof(SiteInitialization).Namespace +
-                    @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
-            {
-                SkippedMigrations = true;
-                return;
-            }
+            ////if (!isOracle && cs.ConnectionString.IndexOf(typeof(SiteInitialization).Namespace +
+            ////        @"_" + databaseKey + "_v1", StringComparison.OrdinalIgnoreCase) < 0)
+            ////{
+            ////    SkippedMigrations = true;
+            ////    return;
+            ////}
 
             string databaseType = "SqlServer";
             if (String.Equals(cs.ProviderName, "npgsql", StringComparison.OrdinalIgnoreCase))
                 databaseType = "Postgres";
             else if (String.Equals(cs.ProviderName, "MySql.Data.MySqlClient", StringComparison.OrdinalIgnoreCase))
                 databaseType = "MySql";
+            else if (String.Equals(cs.ProviderName, "System.Data.SQLite", StringComparison.OrdinalIgnoreCase))
+                databaseType = "SQLite";
             else if (isOracle)
                 databaseType = "OracleManaged";
 
