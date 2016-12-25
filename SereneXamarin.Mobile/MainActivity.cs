@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using SereneXamarin.Mobile.Views;
 using SereneXamarin.Mobile.Models;
+using Android.Util;
 
 namespace SereneXamarin.Mobile
 {
@@ -21,20 +22,25 @@ namespace SereneXamarin.Mobile
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+
             var webView = FindViewById<WebView>(Resource.Id.webView);
             webView.Settings.JavaScriptEnabled = true;
+            WebView.SetWebContentsDebuggingEnabled(true);
+
+            var hybridWebChromeClient = new HybridWebChromeClient(webView.Context);
+            webView.SetWebChromeClient(hybridWebChromeClient);
 
             // Use subclassed WebViewClient to intercept hybrid native calls
             webView.SetWebViewClient(new HybridWebViewClient());
 
             // Render the view from the type generated from RazorView.cshtml
-            var model = new Model1() { Text = "Text goes here" };
-            var template = new RazorView() { Model = model };
-            var page = template.GenerateString();
+            ////var model = new Model1() { Text = "Text goes here" };
+            ////var template = new RazorView() { Model = model };
+            ////var page = template.GenerateString();
 
             // Load the rendered HTML into the view with a base URL 
             // that points to the root of the bundled Assets folder
-            webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
+            webView.LoadUrl("file:///android_asset/RazorView.html");
 
         }
 
@@ -71,6 +77,67 @@ namespace SereneXamarin.Mobile
 
                 return true;
             }
+        }
+
+        class HybridWebChromeClient : WebChromeClient
+        {
+            Context context;
+
+            public HybridWebChromeClient(Context context) : base()
+            {
+                this.context = context;
+                
+            }
+
+            public override bool OnJsAlert(WebView view, string url, string message, JsResult result)
+            {
+                var alertDialogBuilder = new AlertDialog.Builder(context)
+                    .SetMessage(message)
+                    .SetCancelable(false)
+                    .SetPositiveButton("Ok", (sender, args) =>
+                    {
+                        result.Confirm();
+                    });
+
+                alertDialogBuilder.Create().Show();
+
+                return true;
+            }
+
+            public override bool OnJsConfirm(WebView view, string url, string message, JsResult result)
+            {
+                var alertDialogBuilder = new AlertDialog.Builder(context)
+                    .SetMessage(message)
+                    .SetCancelable(false)
+                    .SetPositiveButton("Ok", (sender, args) =>
+                    {
+                        result.Confirm();
+                    })
+                    .SetNegativeButton("Cancel", (sender, args) =>
+                    {
+                        result.Cancel();
+                    });
+
+                alertDialogBuilder.Create().Show();
+
+                return true;
+            }
+            public override void OnConsoleMessage(string message, int lineNumber, string sourceID)
+            {
+                Log.Debug("MyApplication", message + " -- From line "
+                     + lineNumber + " of "
+                     + sourceID);
+
+            }
+            public override bool OnConsoleMessage(ConsoleMessage consoleMessage)
+            {
+                Log.Debug("MyApplication", consoleMessage.Message() + " -- From line "
+                                     + consoleMessage.LineNumber() + " of "
+                                     + consoleMessage.SourceId());
+                
+                return base.OnConsoleMessage(consoleMessage);
+            }
+
         }
     }
 }

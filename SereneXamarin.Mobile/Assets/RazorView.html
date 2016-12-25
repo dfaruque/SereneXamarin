@@ -1,0 +1,68 @@
+<html>
+<head>
+
+    <link href="aristo.css" rel="stylesheet" />
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="font-awesome.css" rel="stylesheet" />
+    <link href="font-open-sans.css" rel="stylesheet" />
+    <link href="ionicons.css" rel="stylesheet" />
+    <link href="jquery.colorbox.css" rel="stylesheet" />
+    <link href="jquery.fileupload.css" rel="stylesheet" />
+    <link href="pace.css" rel="stylesheet" />
+    <link href="select2.css" rel="stylesheet" />
+    <link href="serenity.css" rel="stylesheet" />
+    <link href="simple-line-icons.css" rel="stylesheet" />
+    <link href="site.css" rel="stylesheet" />
+    <link href="slick.grid.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="toastr.css" rel="stylesheet" />
+
+    <script src="Bundle.Libs.js"></script>
+    <script src="Bundle.Site.js"></script>
+    <script src="ColumnsBundle.js"></script>
+    <script src="FormBundle.js"></script>
+    <script src="jquery.maskedinput.js"></script>
+    <script src="LocalText.Site.en-US.Public.js"></script>
+    <script src="RegisteredScripts.js"></script>
+    <script src="TemplateBundle.js"></script>
+    <script type="text/javascript">
+
+        // This javascript method calls C# by setting the browser
+        // to a URL with a custom scheme that is registered in C#.
+        // All values are sent to C# as part of the querystring
+        function InvokeCSharpWithFormValues(elm) {
+            var qs = "";
+            var elms = elm.form.elements;
+
+            for (var i = 0; i < elms.length; i++) {
+                qs += "&" + elms[i].name + "=" + elms[i].value;
+            }
+
+            if (elms.length > 0)
+                qs = qs.substring(1);
+
+            location.href = "hybrid:" + elm.name + "?" + qs;
+        }
+
+        // This javascript method is called from C#
+        function SetLabelText(text) {
+            var elm = document.getElementById('label');
+            elm.innerHTML = text;
+        }
+    </script>
+</head>
+<body>
+    <div data-role="page" data-theme="b">
+
+        <div id="GridDiv"></div>
+
+        <script type="text/javascript">
+            jQuery(function () {
+                new SereneXamarin.Administration.RoleGrid($('#GridDiv'), {}).init();
+
+                Q.initFullHeightGridPage($('#GridDiv'));
+            });
+        </script>
+    </div>
+</body>
+</html>	

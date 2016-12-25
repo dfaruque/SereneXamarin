@@ -138,9 +138,9 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\toastr.css" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Assets\Scripts\" />
-    <Folder Include="Assets\Styles\" />
+    <AndroidAsset Include="Assets\RazorView.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
