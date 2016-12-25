@@ -32,174 +32,128 @@ public SereneXamarin.Mobile.Models.Model1 Model { get; set; }
 
 public override void Execute()
 {
-WriteLiteral("<html>\r\n<head>\r\n    <link");
+WriteLiteral("<html>\r\n<head>\r\n    \r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/aristo.css")
-, false)
-);
+WriteLiteral(" href=\"aristo.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/bootstrap.css")
-, false)
-);
+WriteLiteral(" href=\"bootstrap.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/font-awesome.css")
-, false)
-);
+WriteLiteral(" href=\"font-awesome.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/font-open-sans.css")
-, false)
-);
+WriteLiteral(" href=\"font-open-sans.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/ionicons.css")
-, false)
-);
+WriteLiteral(" href=\"ionicons.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/jquery.colorbox.css")
-, false)
-);
+WriteLiteral(" href=\"jquery.colorbox.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/jquery.fileupload.css")
-, false)
-);
+WriteLiteral(" href=\"jquery.fileupload.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/pace.css")
-, false)
-);
+WriteLiteral(" href=\"pace.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/select2.css")
-, false)
-);
+WriteLiteral(" href=\"select2.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/serenity.css")
-, false)
-);
+WriteLiteral(" href=\"serenity.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/simple-line-icons.css")
-, false)
-);
+WriteLiteral(" href=\"simple-line-icons.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/site.css")
-, false)
-);
+WriteLiteral(" href=\"site.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/slick.grid.css")
-, false)
-);
+WriteLiteral(" href=\"slick.grid.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/style.css")
-, false)
-);
+WriteLiteral(" href=\"style.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" />\r\n    <link");
 
-WriteAttribute ("href", " href=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/styles/toastr.css")
-, false)
-);
+WriteLiteral(" href=\"toastr.css\"");
+
 WriteLiteral(" rel=\"stylesheet\"");
 
-WriteLiteral(" />\r\n\r\n    <script");
+WriteLiteral(" />\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/bundle.libs.js")
-, false)
-);
+WriteLiteral(" src=\"bundle.libs.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/bundle.site.js")
-, false)
-);
+WriteLiteral(" src=\"bundle.site.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/columnsbundle.js")
-, false)
-);
+WriteLiteral(" src=\"columnsbundle.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/formbundle.js")
-, false)
-);
+WriteLiteral(" src=\"formbundle.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/jquery.maskedinput.js")
-, false)
-);
+WriteLiteral(" src=\"jquery.maskedinput.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/localtext.site.en-us.public.js")
-, false)
-);
+WriteLiteral(" src=\"localtext.site.en-us.public.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/registeredscripts.js")
-, false)
-);
+WriteLiteral(" src=\"registeredscripts.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
-WriteAttribute ("src", " src=\"", "\""
-, Tuple.Create<string,object,bool> ("", Href("~/assets/scripts/templatebundle.js")
-, false)
-);
+WriteLiteral(" src=\"templatebundle.js\"");
+
 WriteLiteral("></script>\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -272,7 +226,18 @@ WriteLiteral(" value=\"Click\"");
 
 WriteLiteral(" onclick=\"InvokeCSharpWithFormValues(this)\"");
 
-WriteLiteral(" />\r\n\r\n            </div>\r\n\r\n        </form>\r\n    </div>\r\n</body>\r\n</html>\t");
+WriteLiteral(" />\r\n\r\n            </div>\r\n\r\n        </form>\r\n\r\n\r\n        <div");
+
+WriteLiteral(" id=\"GridDiv\"");
+
+WriteLiteral("></div>\r\n\r\n        <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">\r\n            jQuery(function () {\r\n                new SereneXamarin.Administra" +
+"tion.RoleGrid($(\'#GridDiv\'), {}).init();\r\n\r\n                Q.initFullHeightGrid" +
+"Page($(\'#GridDiv\'));\r\n            });\r\n        </script>\r\n    </div>\r\n</body>\r\n<" +
+"/html>\t");
 
 }
 }
