@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SereneXamarin.Web", "SereneXamarin\SereneXamarin.Web\SereneXamarin.Web.csproj", "{E298DC33-D240-4585-AC47-775575246780}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SereneXamarin.Mobile", "SereneXamarin.Mobile\SereneXamarin.Mobile.csproj", "{4E59C8FF-6409-4CAD-9194-3B1C25D5387F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SereneXamarin.Mobile", "SereneXamarin\SereneXamarin.Mobile.csproj", "{4E59C8FF-6409-4CAD-9194-3B1C25D5387F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
