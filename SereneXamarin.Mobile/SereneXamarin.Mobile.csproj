@@ -53,6 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <AndroidAsset Include="Assets\Bundle.Libs.js.download" />
+    <AndroidAsset Include="Assets\Bundle.Site.js.download" />
+    <AndroidAsset Include="Assets\ColumnsBundle.js.download" />
+    <AndroidAsset Include="Assets\FormBundle.js.download" />
+    <AndroidAsset Include="Assets\jquery.maskedinput.js.download" />
+    <AndroidAsset Include="Assets\LocalText.Site.en-US.Public.js.download" />
+    <AndroidAsset Include="Assets\RegisteredScripts.js.download" />
+    <AndroidAsset Include="Assets\TemplateBundle.js.download" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="web.config" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -86,6 +94,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\aristo.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\avatar04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\avatar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\avatar5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\bootstrap.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\font-awesome.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\font-open-sans.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\ionicons.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\jquery.colorbox.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\jquery.fileupload.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\pace.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\select2.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\serenity.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\simple-line-icons.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\site.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\slick.grid.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\toastr.css" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
