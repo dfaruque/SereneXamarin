@@ -9,6 +9,7 @@ using Android.OS;
 using SereneXamarin.Mobile.Views;
 using SereneXamarin.Mobile.Models;
 using Android.Util;
+using Android.Net;
 
 namespace SereneXamarin.Mobile
 {
@@ -26,13 +27,13 @@ namespace SereneXamarin.Mobile
             var webView = FindViewById<WebView>(Resource.Id.webView);
             webView.Settings.JavaScriptEnabled = true;
 
-            //WebView.SetWebContentsDebuggingEnabled(true);
+            WebView.SetWebContentsDebuggingEnabled(true);
 
             var hybridWebChromeClient = new HybridWebChromeClient(webView.Context);
             webView.SetWebChromeClient(hybridWebChromeClient);
 
             // Use subclassed WebViewClient to intercept hybrid native calls
-            webView.SetWebViewClient(new HybridWebViewClient());
+            webView.SetWebViewClient(new HybridWebViewClient(webView.Context));
 
             // Render the view from the type generated from RazorView.cshtml
             ////var model = new Model1() { Text = "Text goes here" };
@@ -47,13 +48,23 @@ namespace SereneXamarin.Mobile
 
         private class HybridWebViewClient : WebViewClient
         {
+            Context context;
+
+            public HybridWebViewClient(Context context) : base()
+            {
+                this.context = context;
+
+            }
+
             public override bool ShouldOverrideUrlLoading(WebView webView, string url)
             {
-
                 // If the URL is not our own custom scheme, just let the webView load the URL as usual
                 var scheme = "hybrid:";
 
-                if (!url.StartsWith(scheme))
+                ////if (!url.StartsWith(scheme))
+                ////    return false;
+
+                if (IsNetworkConnected(this.context))
                     return false;
 
                 // This handler will treat everything between the protocol and "?"
@@ -77,6 +88,49 @@ namespace SereneXamarin.Mobile
                 }
 
                 return true;
+            }
+            //override 
+            public override void OnReceivedClientCertRequest(WebView view, ClientCertRequest request)
+            {
+                base.OnReceivedClientCertRequest(view, request);
+             
+            }
+
+            public override void OnReceivedError(WebView view, IWebResourceRequest request, WebResourceError error)
+            {
+                base.OnReceivedError(view, request, error);
+            }
+            public override void OnReceivedHttpError(WebView view, IWebResourceRequest request, WebResourceResponse errorResponse)
+            {
+                base.OnReceivedHttpError(view, request, errorResponse);
+            }
+            public override WebResourceResponse ShouldInterceptRequest(WebView view, string url)
+            {
+                return base.ShouldInterceptRequest(view, url);
+            }
+            public override WebResourceResponse ShouldInterceptRequest(WebView view, IWebResourceRequest request)
+            {
+                if (request.Url.Path != null && request.Url.Path.Contains("Services/Administration/Role"))
+                {
+
+                }
+
+                return base.ShouldInterceptRequest(view, request);
+            }
+
+            public override void OnFormResubmission(WebView view, Message dontResend, Message resend)
+            {
+                base.OnFormResubmission(view, dontResend, resend);
+            }
+
+            public static Boolean IsNetworkConnected(Context c)
+            {
+                ConnectivityManager connectivityManager = (ConnectivityManager)c.GetSystemService(Context.ConnectivityService);
+
+                NetworkInfo activeConnection = connectivityManager.ActiveNetworkInfo;
+                bool isOnline = (activeConnection != null) && activeConnection.IsConnected;
+
+                return isOnline;
             }
         }
 
