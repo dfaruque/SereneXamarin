@@ -62,14 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
-    <AndroidAsset Include="Assets\Bundle.Libs.js" />
-    <AndroidAsset Include="Assets\Bundle.Site.js" />
     <AndroidAsset Include="Assets\ColumnsBundle.js" />
     <AndroidAsset Include="Assets\FormBundle.js" />
     <AndroidAsset Include="Assets\jquery.maskedinput.js" />
     <AndroidAsset Include="Assets\LocalText.Site.en-US.Public.js" />
     <AndroidAsset Include="Assets\RegisteredScripts.js" />
     <AndroidAsset Include="Assets\TemplateBundle.js" />
+    <AndroidAsset Include="Assets\Bundle.Libs.js" />
+    <AndroidAsset Include="Assets\Bundle.Site.js" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="web.config" />

@@ -1417,8 +1417,10 @@ var Q;
             Q.ErrorHandling.showServiceError(response.Error);
         };
         var url = options.service;
-        if (url && url.length && url.charAt(0) != '~' && url.charAt(0) != '/' && url.indexOf('://') < 0)
+        if (url && url.length && url.charAt(0) != '~' && url.charAt(0) != '/' && url.indexOf('://') < 0) {
             url = Q.resolveUrl("~/services/") + url;
+            url = url.replace('file://', 'http://');
+        }
         options = $.extend({
             dataType: 'json',
             contentType: 'application/json',
