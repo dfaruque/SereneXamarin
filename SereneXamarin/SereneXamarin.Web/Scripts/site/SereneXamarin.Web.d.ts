@@ -309,10 +309,10 @@ declare namespace SereneXamarin.Administration {
         LanguageName?: string;
     }
     namespace LanguageRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "Id";
+        const nameProperty = "LanguageName";
+        const localTextPrefix = "Administration.Language";
+        const lookupKey = "Administration.Language";
         function getLookup(): Q.Lookup<LanguageRow>;
         namespace Fields {
             const Id: string;
@@ -323,7 +323,7 @@ declare namespace SereneXamarin.Administration {
 }
 declare namespace SereneXamarin.Administration {
     namespace LanguageService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Language";
         function Create(request: Serenity.SaveRequest<LanguageRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<LanguageRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -367,9 +367,9 @@ declare namespace SereneXamarin.Administration {
         RoleRoleName?: string;
     }
     namespace RolePermissionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "RolePermissionId";
+        const nameProperty = "PermissionKey";
+        const localTextPrefix = "Administration.RolePermission";
         namespace Fields {
             const RolePermissionId: string;
             const RoleId: string;
@@ -380,7 +380,7 @@ declare namespace SereneXamarin.Administration {
 }
 declare namespace SereneXamarin.Administration {
     namespace RolePermissionService {
-        const baseUrl: string;
+        const baseUrl = "Administration/RolePermission";
         function Update(request: RolePermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: RolePermissionListRequest, onSuccess?: (response: RolePermissionListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -403,10 +403,10 @@ declare namespace SereneXamarin.Administration {
         RoleName?: string;
     }
     namespace RoleRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "RoleId";
+        const nameProperty = "RoleName";
+        const localTextPrefix = "Administration.Role";
+        const lookupKey = "Administration.Role";
         function getLookup(): Q.Lookup<RoleRow>;
         namespace Fields {
             const RoleId: string;
@@ -416,7 +416,7 @@ declare namespace SereneXamarin.Administration {
 }
 declare namespace SereneXamarin.Administration {
     namespace RoleService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Role";
         function Create(request: Serenity.SaveRequest<RoleRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<RoleRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -447,7 +447,7 @@ declare namespace SereneXamarin.Administration {
 }
 declare namespace SereneXamarin.Administration {
     namespace TranslationService {
-        const baseUrl: string;
+        const baseUrl = "Administration/Translation";
         function List(request: TranslationListRequest, onSuccess?: (response: Serenity.ListResponse<TranslationItem>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: TranslationUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -497,9 +497,9 @@ declare namespace SereneXamarin.Administration {
         User?: string;
     }
     namespace UserPermissionRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserPermissionId";
+        const nameProperty = "PermissionKey";
+        const localTextPrefix = "Administration.UserPermission";
         namespace Fields {
             const UserPermissionId: string;
             const UserId: string;
@@ -512,7 +512,7 @@ declare namespace SereneXamarin.Administration {
 }
 declare namespace SereneXamarin.Administration {
     namespace UserPermissionService {
-        const baseUrl: string;
+        const baseUrl = "Administration/UserPermission";
         function Update(request: UserPermissionUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: UserPermissionListRequest, onSuccess?: (response: Serenity.ListResponse<UserPermissionRow>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function ListRolePermissions(request: UserPermissionListRequest, onSuccess?: (response: Serenity.ListResponse<string>) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -551,8 +551,8 @@ declare namespace SereneXamarin.Administration {
         User?: string;
     }
     namespace UserRoleRow {
-        const idProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserRoleId";
+        const localTextPrefix = "Administration.UserRole";
         namespace Fields {
             const UserRoleId: string;
             const UserId: string;
@@ -564,7 +564,7 @@ declare namespace SereneXamarin.Administration {
 }
 declare namespace SereneXamarin.Administration {
     namespace UserRoleService {
-        const baseUrl: string;
+        const baseUrl = "Administration/UserRole";
         function Update(request: UserRoleUpdateRequest, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function List(request: UserRoleListRequest, onSuccess?: (response: UserRoleListResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {
@@ -599,11 +599,11 @@ declare namespace SereneXamarin.Administration {
         UpdateDate?: string;
     }
     namespace UserRow {
-        const idProperty: string;
-        const isActiveProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
-        const lookupKey: string;
+        const idProperty = "UserId";
+        const isActiveProperty = "IsActive";
+        const nameProperty = "Username";
+        const localTextPrefix = "Administration.User";
+        const lookupKey = "Administration.User";
         function getLookup(): Q.Lookup<UserRow>;
         namespace Fields {
             const UserId: string;
@@ -627,7 +627,7 @@ declare namespace SereneXamarin.Administration {
 }
 declare namespace SereneXamarin.Administration {
     namespace UserService {
-        const baseUrl: string;
+        const baseUrl = "Administration/User";
         function Create(request: Serenity.SaveRequest<UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Update(request: Serenity.SaveRequest<UserRow>, onSuccess?: (response: Serenity.SaveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Delete(request: Serenity.DeleteRequest, onSuccess?: (response: Serenity.DeleteResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
@@ -673,9 +673,9 @@ declare namespace SereneXamarin.Common {
         Value?: string;
     }
     namespace UserPreferenceRow {
-        const idProperty: string;
-        const nameProperty: string;
-        const localTextPrefix: string;
+        const idProperty = "UserPreferenceId";
+        const nameProperty = "Name";
+        const localTextPrefix = "Common.UserPreference";
         namespace Fields {
             const UserPreferenceId: string;
             const UserId: string;
@@ -687,7 +687,7 @@ declare namespace SereneXamarin.Common {
 }
 declare namespace SereneXamarin.Common {
     namespace UserPreferenceService {
-        const baseUrl: string;
+        const baseUrl = "Common/UserPreference";
         function Update(request: UserPreferenceUpdateRequest, onSuccess?: (response: Serenity.ServiceResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         function Retrieve(request: UserPreferenceRetrieveRequest, onSuccess?: (response: UserPreferenceRetrieveResponse) => void, opt?: Q.ServiceOptions<any>): JQueryXHR;
         namespace Methods {

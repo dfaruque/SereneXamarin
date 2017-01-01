@@ -16,19 +16,20 @@ var SereneXamarin;
         var LanguageDialog = (function (_super) {
             __extends(LanguageDialog, _super);
             function LanguageDialog() {
-                _super.apply(this, arguments);
-                this.form = new Administration.LanguageForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Administration.LanguageForm(_this.idPrefix);
+                return _this;
             }
             LanguageDialog.prototype.getFormKey = function () { return Administration.LanguageForm.formKey; };
             LanguageDialog.prototype.getIdProperty = function () { return Administration.LanguageRow.idProperty; };
             LanguageDialog.prototype.getLocalTextPrefix = function () { return Administration.LanguageRow.localTextPrefix; };
             LanguageDialog.prototype.getNameProperty = function () { return Administration.LanguageRow.nameProperty; };
             LanguageDialog.prototype.getService = function () { return Administration.LanguageService.baseUrl; };
-            LanguageDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LanguageDialog);
             return LanguageDialog;
         }(Serenity.EntityDialog));
+        LanguageDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LanguageDialog);
         Administration.LanguageDialog = LanguageDialog;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -39,7 +40,7 @@ var SereneXamarin;
         var LanguageGrid = (function (_super) {
             __extends(LanguageGrid, _super);
             function LanguageGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             LanguageGrid.prototype.getColumnsKey = function () { return "Administration.Language"; };
             LanguageGrid.prototype.getDialogType = function () { return Administration.LanguageDialog; };
@@ -49,11 +50,11 @@ var SereneXamarin;
             LanguageGrid.prototype.getDefaultSortBy = function () {
                 return [Administration.LanguageRow.Fields.LanguageName];
             };
-            LanguageGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LanguageGrid);
             return LanguageGrid;
         }(Serenity.EntityGrid));
+        LanguageGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LanguageGrid);
         Administration.LanguageGrid = LanguageGrid;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -64,8 +65,9 @@ var SereneXamarin;
         var RoleDialog = (function (_super) {
             __extends(RoleDialog, _super);
             function RoleDialog() {
-                _super.apply(this, arguments);
-                this.form = new Administration.RoleForm(this.idPrefix);
+                var _this = _super.apply(this, arguments) || this;
+                _this.form = new Administration.RoleForm(_this.idPrefix);
+                return _this;
             }
             RoleDialog.prototype.getFormKey = function () { return Administration.RoleForm.formKey; };
             RoleDialog.prototype.getIdProperty = function () { return Administration.RoleRow.idProperty; };
@@ -73,6 +75,9 @@ var SereneXamarin;
             RoleDialog.prototype.getNameProperty = function () { return Administration.RoleRow.nameProperty; };
             RoleDialog.prototype.getService = function () { return Administration.RoleService.baseUrl; };
             RoleDialog.prototype.getToolbarButtons = function () {
+                //let gg = new RoleGrid($('df'));
+                //gg.init();
+                //gg.setItems.setItems();
                 var _this = this;
                 var buttons = _super.prototype.getToolbarButtons.call(this);
                 buttons.push({
@@ -92,11 +97,11 @@ var SereneXamarin;
                 _super.prototype.updateInterface.call(this);
                 this.toolbar.findButton("edit-permissions-button").toggleClass("disabled", this.isNewOrDeleted());
             };
-            RoleDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RoleDialog);
             return RoleDialog;
         }(Serenity.EntityDialog));
+        RoleDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RoleDialog);
         Administration.RoleDialog = RoleDialog;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -107,7 +112,7 @@ var SereneXamarin;
         var RoleGrid = (function (_super) {
             __extends(RoleGrid, _super);
             function RoleGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             RoleGrid.prototype.getColumnsKey = function () { return "Administration.Role"; };
             RoleGrid.prototype.getDialogType = function () { return Administration.RoleDialog; };
@@ -117,11 +122,11 @@ var SereneXamarin;
             RoleGrid.prototype.getDefaultSortBy = function () {
                 return [Administration.RoleRow.Fields.RoleName];
             };
-            RoleGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RoleGrid);
             return RoleGrid;
         }(Serenity.EntityGrid));
+        RoleGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RoleGrid);
         Administration.RoleGrid = RoleGrid;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -132,18 +137,18 @@ var SereneXamarin;
         var RolePermissionDialog = (function (_super) {
             __extends(RolePermissionDialog, _super);
             function RolePermissionDialog(opt) {
-                var _this = this;
-                _super.call(this, opt);
-                this.permissions = new Administration.PermissionCheckEditor(this.byId('Permissions'), {
+                var _this = _super.call(this, opt) || this;
+                _this.permissions = new Administration.PermissionCheckEditor(_this.byId('Permissions'), {
                     showRevoke: false
                 });
                 Administration.RolePermissionService.List({
-                    RoleID: this.options.roleID,
+                    RoleID: _this.options.roleID,
                     Module: null,
                     Submodule: null
                 }, function (response) {
                     _this.permissions.set_value(response.Entities.map(function (x) { return ({ PermissionKey: x }); }));
                 });
+                return _this;
             }
             RolePermissionDialog.prototype.getDialogOptions = function () {
                 var _this = this;
@@ -165,18 +170,19 @@ var SereneXamarin;
                     }, {
                         text: Q.text('Dialogs.CancelButton'),
                         click: function () { return _this.dialogClose(); }
-                    }];
+                    }
+                ];
                 opt.title = Q.format(Q.text('Site.RolePermissionDialog.DialogTitle'), this.options.title);
                 return opt;
             };
             RolePermissionDialog.prototype.getTemplate = function () {
                 return '<div id="~_Permissions"></div>';
             };
-            RolePermissionDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], RolePermissionDialog);
             return RolePermissionDialog;
         }(Serenity.TemplatedDialog));
+        RolePermissionDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], RolePermissionDialog);
         Administration.RolePermissionDialog = RolePermissionDialog;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -187,9 +193,8 @@ var SereneXamarin;
         var TranslationGrid = (function (_super) {
             __extends(TranslationGrid, _super);
             function TranslationGrid(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.element.on('keyup.' + this.uniqueName + ' change.' + this.uniqueName, 'input.custom-text', function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.element.on('keyup.' + _this.uniqueName + ' change.' + _this.uniqueName, 'input.custom-text', function (e) {
                     var value = Q.trimToNull($(e.target).val());
                     if (value === '') {
                         value = null;
@@ -197,6 +202,7 @@ var SereneXamarin;
                     _this.view.getItemById($(e.target).data('key')).CustomText = value;
                     _this.hasChanges = true;
                 });
+                return _this;
             }
             TranslationGrid.prototype.getIdProperty = function () { return "Key"; };
             TranslationGrid.prototype.getLocalTextPrefix = function () { return "Administration.Translation"; };
@@ -369,11 +375,11 @@ var SereneXamarin;
             TranslationGrid.prototype.usePager = function () {
                 return false;
             };
-            TranslationGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], TranslationGrid);
             return TranslationGrid;
         }(Serenity.EntityGrid));
+        TranslationGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], TranslationGrid);
         Administration.TranslationGrid = TranslationGrid;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -400,17 +406,17 @@ var SereneXamarin;
         var UserDialog = (function (_super) {
             __extends(UserDialog, _super);
             function UserDialog() {
-                var _this = this;
-                _super.call(this);
-                this.form = new Administration.UserForm(this.idPrefix);
-                this.form.Password.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this) || this;
+                _this.form = new Administration.UserForm(_this.idPrefix);
+                _this.form.Password.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.Password.value.length < 7)
                         return "Password must be at least 7 characters!";
                 });
-                this.form.PasswordConfirm.addValidationRule(this.uniqueName, function (e) {
+                _this.form.PasswordConfirm.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.Password.value != _this.form.PasswordConfirm.value)
                         return "The passwords entered doesn't match!";
                 });
+                return _this;
             }
             UserDialog.prototype.getFormKey = function () { return Administration.UserForm.formKey; };
             UserDialog.prototype.getIdProperty = function () { return Administration.UserRow.idProperty; };
@@ -458,11 +464,11 @@ var SereneXamarin;
                 this.form.PasswordConfirm.element.toggleClass('required', this.isNew())
                     .closest('.field').find('sup').toggle(this.isNew());
             };
-            UserDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserDialog);
             return UserDialog;
         }(Serenity.EntityDialog));
+        UserDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserDialog);
         Administration.UserDialog = UserDialog;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -473,7 +479,7 @@ var SereneXamarin;
         var UserGrid = (function (_super) {
             __extends(UserGrid, _super);
             function UserGrid(container) {
-                _super.call(this, container);
+                return _super.call(this, container) || this;
             }
             UserGrid.prototype.getColumnsKey = function () { return "Administration.User"; };
             UserGrid.prototype.getDialogType = function () { return Administration.UserDialog; };
@@ -484,11 +490,11 @@ var SereneXamarin;
             UserGrid.prototype.getDefaultSortBy = function () {
                 return [Administration.UserRow.Fields.Username];
             };
-            UserGrid = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserGrid);
             return UserGrid;
         }(Serenity.EntityGrid));
+        UserGrid = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserGrid);
         Administration.UserGrid = UserGrid;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -499,20 +505,20 @@ var SereneXamarin;
         var PermissionCheckEditor = (function (_super) {
             __extends(PermissionCheckEditor, _super);
             function PermissionCheckEditor(container, opt) {
-                var _this = this;
-                _super.call(this, container, opt);
-                this.rolePermissions = {};
+                var _this = _super.call(this, container, opt) || this;
+                _this.rolePermissions = {};
                 var titleByKey = {};
-                var permissionKeys = this.getSortedGroupAndPermissionKeys(titleByKey);
-                var items = permissionKeys.map(function (key) { return {
+                var permissionKeys = _this.getSortedGroupAndPermissionKeys(titleByKey);
+                var items = permissionKeys.map(function (key) { return ({
                     Key: key,
                     ParentKey: _this.getParentKey(key),
                     Title: titleByKey[key],
                     GrantRevoke: null,
                     IsGroup: key.charAt(key.length - 1) === ':'
-                }; });
-                this.byParentKey = Q.toGrouping(items, function (x) { return x.ParentKey; });
-                this.setItems(items);
+                }); });
+                _this.byParentKey = Q.toGrouping(items, function (x) { return x.ParentKey; });
+                _this.setItems(items);
+                return _this;
             }
             PermissionCheckEditor.prototype.getIdProperty = function () { return "Key"; };
             PermissionCheckEditor.prototype.getItemGrantRevokeClass = function (item, grant) {
@@ -756,11 +762,11 @@ var SereneXamarin;
                 }
                 this.setItems(this.getItems());
             };
-            PermissionCheckEditor = __decorate([
-                Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
-            ], PermissionCheckEditor);
             return PermissionCheckEditor;
         }(Serenity.DataGrid));
+        PermissionCheckEditor = __decorate([
+            Serenity.Decorators.registerEditor([Serenity.IGetEditValue, Serenity.ISetEditValue])
+        ], PermissionCheckEditor);
         Administration.PermissionCheckEditor = PermissionCheckEditor;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -771,25 +777,25 @@ var SereneXamarin;
         var UserPermissionDialog = (function (_super) {
             __extends(UserPermissionDialog, _super);
             function UserPermissionDialog(opt) {
-                var _this = this;
-                _super.call(this, opt);
-                this.permissions = new Administration.PermissionCheckEditor(this.byId('Permissions'), {
+                var _this = _super.call(this, opt) || this;
+                _this.permissions = new Administration.PermissionCheckEditor(_this.byId('Permissions'), {
                     showRevoke: true
                 });
                 Administration.UserPermissionService.List({
-                    UserID: this.options.userID,
+                    UserID: _this.options.userID,
                     Module: null,
                     Submodule: null
                 }, function (response) {
                     _this.permissions.set_value(response.Entities);
                 });
                 Administration.UserPermissionService.ListRolePermissions({
-                    UserID: this.options.userID,
+                    UserID: _this.options.userID,
                     Module: null,
                     Submodule: null,
                 }, function (response) {
                     _this.permissions.set_rolePermissions(response.Entities);
                 });
+                return _this;
             }
             UserPermissionDialog.prototype.getDialogOptions = function () {
                 var _this = this;
@@ -811,18 +817,19 @@ var SereneXamarin;
                     }, {
                         text: Q.text('Dialogs.CancelButton'),
                         click: function () { return _this.dialogClose(); }
-                    }];
+                    }
+                ];
                 opt.title = Q.format(Q.text('Site.UserPermissionDialog.DialogTitle'), this.options.username);
                 return opt;
             };
             UserPermissionDialog.prototype.getTemplate = function () {
                 return '<div id="~_Permissions"></div>';
             };
-            UserPermissionDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserPermissionDialog);
             return UserPermissionDialog;
         }(Serenity.TemplatedDialog));
+        UserPermissionDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserPermissionDialog);
         Administration.UserPermissionDialog = UserPermissionDialog;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -833,7 +840,7 @@ var SereneXamarin;
         var RoleCheckEditor = (function (_super) {
             __extends(RoleCheckEditor, _super);
             function RoleCheckEditor(div) {
-                _super.call(this, div);
+                return _super.call(this, div) || this;
             }
             RoleCheckEditor.prototype.createToolbarExtensions = function () {
                 var _this = this;
@@ -847,10 +854,10 @@ var SereneXamarin;
                 return [];
             };
             RoleCheckEditor.prototype.getTreeItems = function () {
-                return Administration.RoleRow.getLookup().items.map(function (role) { return {
+                return Administration.RoleRow.getLookup().items.map(function (role) { return ({
                     id: role.RoleId.toString(),
                     text: role.RoleName
-                }; });
+                }); });
             };
             RoleCheckEditor.prototype.onViewFilter = function (item) {
                 return _super.prototype.onViewFilter.call(this, item) &&
@@ -858,11 +865,11 @@ var SereneXamarin;
                         Select2.util.stripDiacritics(item.text || '')
                             .toUpperCase().indexOf(this.searchText) >= 0);
             };
-            RoleCheckEditor = __decorate([
-                Serenity.Decorators.registerEditor()
-            ], RoleCheckEditor);
             return RoleCheckEditor;
         }(Serenity.CheckTreeEditor));
+        RoleCheckEditor = __decorate([
+            Serenity.Decorators.registerEditor()
+        ], RoleCheckEditor);
         Administration.RoleCheckEditor = RoleCheckEditor;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -873,14 +880,14 @@ var SereneXamarin;
         var UserRoleDialog = (function (_super) {
             __extends(UserRoleDialog, _super);
             function UserRoleDialog(opt) {
-                var _this = this;
-                _super.call(this, opt);
-                this.permissions = new Administration.RoleCheckEditor(this.byId('Roles'));
+                var _this = _super.call(this, opt) || this;
+                _this.permissions = new Administration.RoleCheckEditor(_this.byId('Roles'));
                 Administration.UserRoleService.List({
-                    UserID: this.options.userID
+                    UserID: _this.options.userID
                 }, function (response) {
                     _this.permissions.value = response.Entities.map(function (x) { return x.toString(); });
                 });
+                return _this;
             }
             UserRoleDialog.prototype.getDialogOptions = function () {
                 var _this = this;
@@ -906,11 +913,11 @@ var SereneXamarin;
             UserRoleDialog.prototype.getTemplate = function () {
                 return "<div id='~_Roles'></div>";
             };
-            UserRoleDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], UserRoleDialog);
             return UserRoleDialog;
         }(Serenity.TemplatedDialog));
+        UserRoleDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], UserRoleDialog);
         Administration.UserRoleDialog = UserRoleDialog;
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -919,15 +926,15 @@ var SereneXamarin;
     var BasicProgressDialog = (function (_super) {
         __extends(BasicProgressDialog, _super);
         function BasicProgressDialog() {
-            var _this = this;
-            _super.call(this);
-            this.byId('ProgressBar').progressbar({
+            var _this = _super.call(this) || this;
+            _this.byId('ProgressBar').progressbar({
                 max: 100,
                 value: 0,
                 change: function (e, v) {
                     _this.byId('ProgressLabel').text(_this.value + ' / ' + _this.max);
                 }
             });
+            return _this;
         }
         Object.defineProperty(BasicProgressDialog.prototype, "max", {
             get: function () {
@@ -1199,20 +1206,20 @@ var SereneXamarin;
                 sb += "</select>";
                 return sb;
             };
-            __decorate([
-                Serenity.Decorators.option()
-            ], EnumSelectFormatter.prototype, "enumKey", void 0);
-            __decorate([
-                Serenity.Decorators.option()
-            ], EnumSelectFormatter.prototype, "allowClear", void 0);
-            __decorate([
-                Serenity.Decorators.option()
-            ], EnumSelectFormatter.prototype, "emptyItemText", void 0);
-            EnumSelectFormatter = __decorate([
-                Serenity.Decorators.registerFormatter()
-            ], EnumSelectFormatter);
             return EnumSelectFormatter;
         }());
+        __decorate([
+            Serenity.Decorators.option()
+        ], EnumSelectFormatter.prototype, "enumKey", void 0);
+        __decorate([
+            Serenity.Decorators.option()
+        ], EnumSelectFormatter.prototype, "allowClear", void 0);
+        __decorate([
+            Serenity.Decorators.option()
+        ], EnumSelectFormatter.prototype, "emptyItemText", void 0);
+        EnumSelectFormatter = __decorate([
+            Serenity.Decorators.registerFormatter()
+        ], EnumSelectFormatter);
         Common.EnumSelectFormatter = EnumSelectFormatter;
     })(Common = SereneXamarin.Common || (SereneXamarin.Common = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -1261,8 +1268,9 @@ var SereneXamarin;
         var GridEditorBase = (function (_super) {
             __extends(GridEditorBase, _super);
             function GridEditorBase(container) {
-                _super.call(this, container);
-                this.nextId = 1;
+                var _this = _super.call(this, container) || this;
+                _this.nextId = 1;
+                return _this;
             }
             GridEditorBase.prototype.getIdProperty = function () { return "__id"; };
             GridEditorBase.prototype.id = function (entity) {
@@ -1381,13 +1389,13 @@ var SereneXamarin;
             };
             GridEditorBase.prototype.createQuickSearchInput = function () {
             };
-            GridEditorBase = __decorate([
-                Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
-                Serenity.Decorators.editor(),
-                Serenity.Decorators.element("<div/>")
-            ], GridEditorBase);
             return GridEditorBase;
         }(Serenity.EntityGrid));
+        GridEditorBase = __decorate([
+            Serenity.Decorators.registerClass([Serenity.IGetEditValue, Serenity.ISetEditValue]),
+            Serenity.Decorators.editor(),
+            Serenity.Decorators.element("<div/>")
+        ], GridEditorBase);
         Common.GridEditorBase = GridEditorBase;
     })(Common = SereneXamarin.Common || (SereneXamarin.Common = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -1398,7 +1406,7 @@ var SereneXamarin;
         var GridEditorDialog = (function (_super) {
             __extends(GridEditorDialog, _super);
             function GridEditorDialog() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
             GridEditorDialog.prototype.getIdProperty = function () { return "__id"; };
             GridEditorDialog.prototype.destroy = function () {
@@ -1419,11 +1427,11 @@ var SereneXamarin;
             GridEditorDialog.prototype.deleteHandler = function (options, callback) {
                 this.onDelete && this.onDelete(options, callback);
             };
-            GridEditorDialog = __decorate([
-                Serenity.Decorators.registerClass()
-            ], GridEditorDialog);
             return GridEditorDialog;
         }(Serenity.EntityDialog));
+        GridEditorDialog = __decorate([
+            Serenity.Decorators.registerClass()
+        ], GridEditorDialog);
         Common.GridEditorDialog = GridEditorDialog;
     })(Common = SereneXamarin.Common || (SereneXamarin.Common = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -1451,11 +1459,11 @@ var SereneXamarin;
         var LanguageForm = (function (_super) {
             __extends(LanguageForm, _super);
             function LanguageForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            LanguageForm.formKey = 'Administration.Language';
             return LanguageForm;
         }(Serenity.PrefixedContext));
+        LanguageForm.formKey = 'Administration.Language';
         Administration.LanguageForm = LanguageForm;
         [['LanguageId', function () { return Serenity.StringEditor; }], ['LanguageName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(LanguageForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
@@ -1505,11 +1513,11 @@ var SereneXamarin;
         var RoleForm = (function (_super) {
             __extends(RoleForm, _super);
             function RoleForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            RoleForm.formKey = 'Administration.Role';
             return RoleForm;
         }(Serenity.PrefixedContext));
+        RoleForm.formKey = 'Administration.Role';
         Administration.RoleForm = RoleForm;
         [['RoleName', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(RoleForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
@@ -1609,11 +1617,11 @@ var SereneXamarin;
         var UserForm = (function (_super) {
             __extends(UserForm, _super);
             function UserForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            UserForm.formKey = 'Administration.User';
             return UserForm;
         }(Serenity.PrefixedContext));
+        UserForm.formKey = 'Administration.User';
         Administration.UserForm = UserForm;
         [['Username', function () { return Serenity.StringEditor; }], ['DisplayName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['UserImage', function () { return Serenity.ImageUploadEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['PasswordConfirm', function () { return Serenity.PasswordEditor; }], ['Source', function () { return Serenity.StringEditor; }]].forEach(function (x) { return Object.defineProperty(UserForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Administration = SereneXamarin.Administration || (SereneXamarin.Administration = {}));
@@ -1762,11 +1770,11 @@ var SereneXamarin;
         var ChangePasswordForm = (function (_super) {
             __extends(ChangePasswordForm, _super);
             function ChangePasswordForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ChangePasswordForm.formKey = 'Membership.ChangePassword';
             return ChangePasswordForm;
         }(Serenity.PrefixedContext));
+        ChangePasswordForm.formKey = 'Membership.ChangePassword';
         Membership.ChangePasswordForm = ChangePasswordForm;
         [['OldPassword', function () { return Serenity.PasswordEditor; }], ['NewPassword', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(ChangePasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
@@ -1778,11 +1786,11 @@ var SereneXamarin;
         var ForgotPasswordForm = (function (_super) {
             __extends(ForgotPasswordForm, _super);
             function ForgotPasswordForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ForgotPasswordForm.formKey = 'Membership.ForgotPassword';
             return ForgotPasswordForm;
         }(Serenity.PrefixedContext));
+        ForgotPasswordForm.formKey = 'Membership.ForgotPassword';
         Membership.ForgotPasswordForm = ForgotPasswordForm;
         [['Email', function () { return Serenity.EmailEditor; }]].forEach(function (x) { return Object.defineProperty(ForgotPasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
@@ -1794,11 +1802,11 @@ var SereneXamarin;
         var LoginForm = (function (_super) {
             __extends(LoginForm, _super);
             function LoginForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            LoginForm.formKey = 'Membership.Login';
             return LoginForm;
         }(Serenity.PrefixedContext));
+        LoginForm.formKey = 'Membership.Login';
         Membership.LoginForm = LoginForm;
         [['Username', function () { return Serenity.StringEditor; }], ['Password', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(LoginForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
@@ -1810,11 +1818,11 @@ var SereneXamarin;
         var ResetPasswordForm = (function (_super) {
             __extends(ResetPasswordForm, _super);
             function ResetPasswordForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            ResetPasswordForm.formKey = 'Membership.ResetPassword';
             return ResetPasswordForm;
         }(Serenity.PrefixedContext));
+        ResetPasswordForm.formKey = 'Membership.ResetPassword';
         Membership.ResetPasswordForm = ResetPasswordForm;
         [['NewPassword', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(ResetPasswordForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
@@ -1826,11 +1834,11 @@ var SereneXamarin;
         var SignUpForm = (function (_super) {
             __extends(SignUpForm, _super);
             function SignUpForm() {
-                _super.apply(this, arguments);
+                return _super.apply(this, arguments) || this;
             }
-            SignUpForm.formKey = 'Membership.SignUp';
             return SignUpForm;
         }(Serenity.PrefixedContext));
+        SignUpForm.formKey = 'Membership.SignUp';
         Membership.SignUpForm = SignUpForm;
         [['DisplayName', function () { return Serenity.StringEditor; }], ['Email', function () { return Serenity.EmailEditor; }], ['ConfirmEmail', function () { return Serenity.EmailEditor; }], ['Password', function () { return Serenity.PasswordEditor; }], ['ConfirmPassword', function () { return Serenity.PasswordEditor; }]].forEach(function (x) { return Object.defineProperty(SignUpForm.prototype, x[0], { get: function () { return this.w(x[0], x[1]()); }, enumerable: true, configurable: true }); });
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
@@ -1842,9 +1850,9 @@ var SereneXamarin;
         var LanguageSelection = (function (_super) {
             __extends(LanguageSelection, _super);
             function LanguageSelection(select, currentLanguage) {
-                _super.call(this, select);
+                var _this = _super.call(this, select) || this;
                 currentLanguage = Q.coalesce(currentLanguage, 'en');
-                this.change(function (e) {
+                _this.change(function (e) {
                     $.cookie('LanguagePreference', select.val(), {
                         path: Q.Config.applicationPath,
                         expires: 365
@@ -1870,6 +1878,7 @@ var SereneXamarin;
                     }
                     select.val(currentLanguage);
                 });
+                return _this;
             }
             return LanguageSelection;
         }(Serenity.Widget));
@@ -1883,15 +1892,15 @@ var SereneXamarin;
         var SidebarSearch = (function (_super) {
             __extends(SidebarSearch, _super);
             function SidebarSearch(input, menuUL) {
-                var _this = this;
-                _super.call(this, input);
+                var _this = _super.call(this, input) || this;
                 new Serenity.QuickSearchInput(input, {
                     onSearch: function (field, text, success) {
                         _this.updateMatchFlags(text);
                         success(true);
                     }
                 });
-                this.menuUL = menuUL;
+                _this.menuUL = menuUL;
+                return _this;
             }
             SidebarSearch.prototype.updateMatchFlags = function (text) {
                 var liList = this.menuUL.find('li').removeClass('non-match');
@@ -1936,9 +1945,8 @@ var SereneXamarin;
         var ThemeSelection = (function (_super) {
             __extends(ThemeSelection, _super);
             function ThemeSelection(select) {
-                var _this = this;
-                _super.call(this, select);
-                this.change(function (e) {
+                var _this = _super.call(this, select) || this;
+                _this.change(function (e) {
                     $.cookie('ThemePreference', select.val(), {
                         path: Q.Config.applicationPath,
                         expires: 365
@@ -1958,7 +1966,8 @@ var SereneXamarin;
                 Q.addOption(select, 'yellow-light', Q.text('Site.Layout.ThemeYellowLight'));
                 Q.addOption(select, 'black', Q.text('Site.Layout.ThemeBlack'));
                 Q.addOption(select, 'black-light', Q.text('Site.Layout.ThemeBlackLight'));
-                select.val(this.getCurrentTheme());
+                select.val(_this.getCurrentTheme());
+                return _this;
             }
             ThemeSelection.prototype.getCurrentTheme = function () {
                 var skinClass = Q.first(($('body').attr('class') || '').split(' '), function (x) { return Q.startsWith(x, 'skin-'); });
@@ -2164,9 +2173,10 @@ var SereneXamarin;
         var ReportDialog = (function (_super) {
             __extends(ReportDialog, _super);
             function ReportDialog(options) {
-                _super.call(this, options);
-                this.updateInterface();
-                this.loadReport(this.options.reportKey);
+                var _this = _super.call(this, options) || this;
+                _this.updateInterface();
+                _this.loadReport(_this.options.reportKey);
+                return _this;
             }
             ReportDialog.prototype.getDialogButtons = function () {
                 return null;
@@ -2283,8 +2293,7 @@ var SereneXamarin;
         var ReportPage = (function (_super) {
             __extends(ReportPage, _super);
             function ReportPage(element) {
-                var _this = this;
-                _super.call(this, element);
+                var _this = _super.call(this, element) || this;
                 $('.report-link', element).click(function (e) { return _this.reportLinkClick(e); });
                 $('div.line', element).click(function (e) { return _this.categoryClick(e); });
                 new Serenity.QuickSearchInput($('.s-QuickSearchBar input', element), {
@@ -2293,6 +2302,7 @@ var SereneXamarin;
                         done(true);
                     }
                 });
+                return _this;
             }
             ReportPage.prototype.updateMatchFlags = function (text) {
                 var liList = $('.report-list', this.element).find('li').removeClass('non-match');
@@ -2391,20 +2401,19 @@ var SereneXamarin;
         var ChangePasswordPanel = (function (_super) {
             __extends(ChangePasswordPanel, _super);
             function ChangePasswordPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.ChangePasswordForm(this.idPrefix);
-                this.form.NewPassword.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ChangePasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.w('ConfirmPassword', Serenity.PasswordEditor).value.length < 7) {
                         return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
                     }
                 });
-                this.form.ConfirmPassword.addValidationRule(this.uniqueName, function (e) {
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
                         return Q.text('Validation.PasswordConfirm');
                     }
                 });
-                this.byId('SubmitButton').click(function (e) {
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -2420,13 +2429,14 @@ var SereneXamarin;
                         }
                     });
                 });
+                return _this;
             }
             ChangePasswordPanel.prototype.getFormKey = function () { return Membership.ChangePasswordForm.formKey; };
-            ChangePasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ChangePasswordPanel);
             return ChangePasswordPanel;
         }(Serenity.PropertyPanel));
+        ChangePasswordPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ChangePasswordPanel);
         Membership.ChangePasswordPanel = ChangePasswordPanel;
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -2437,10 +2447,9 @@ var SereneXamarin;
         var ForgotPasswordPanel = (function (_super) {
             __extends(ForgotPasswordPanel, _super);
             function ForgotPasswordPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.ForgotPasswordForm(this.idPrefix);
-                this.byId('SubmitButton').click(function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ForgotPasswordForm(_this.idPrefix);
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -2456,13 +2465,14 @@ var SereneXamarin;
                         }
                     });
                 });
+                return _this;
             }
             ForgotPasswordPanel.prototype.getFormKey = function () { return Membership.ForgotPasswordForm.formKey; };
-            ForgotPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ForgotPasswordPanel);
             return ForgotPasswordPanel;
         }(Serenity.PropertyPanel));
+        ForgotPasswordPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ForgotPasswordPanel);
         Membership.ForgotPasswordPanel = ForgotPasswordPanel;
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -2473,8 +2483,7 @@ var SereneXamarin;
         var LoginPanel = (function (_super) {
             __extends(LoginPanel, _super);
             function LoginPanel(container) {
-                var _this = this;
-                _super.call(this, container);
+                var _this = _super.call(this, container) || this;
                 $(function () {
                     $('body').vegas({
                         delay: 10000,
@@ -2489,8 +2498,8 @@ var SereneXamarin;
                         ]
                     });
                 });
-                this.form = new Membership.LoginForm(this.idPrefix);
-                this.byId('LoginButton').click(function (e) {
+                _this.form = new Membership.LoginForm(_this.idPrefix);
+                _this.byId('LoginButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -2511,13 +2520,14 @@ var SereneXamarin;
                         }
                     });
                 });
+                return _this;
             }
             LoginPanel.prototype.getFormKey = function () { return Membership.LoginForm.formKey; };
-            LoginPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], LoginPanel);
             return LoginPanel;
         }(Serenity.PropertyPanel));
+        LoginPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], LoginPanel);
         Membership.LoginPanel = LoginPanel;
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -2528,20 +2538,19 @@ var SereneXamarin;
         var ResetPasswordPanel = (function (_super) {
             __extends(ResetPasswordPanel, _super);
             function ResetPasswordPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.ResetPasswordForm(this.idPrefix);
-                this.form.NewPassword.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.ResetPasswordForm(_this.idPrefix);
+                _this.form.NewPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value.length < 7) {
                         return Q.format(Q.text('Validation.MinRequiredPasswordLength'), 7);
                     }
                 });
-                this.form.ConfirmPassword.addValidationRule(this.uniqueName, function (e) {
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value !== _this.form.NewPassword.value) {
                         return Q.text('Validation.PasswordConfirm');
                     }
                 });
-                this.byId('SubmitButton').click(function (e) {
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -2558,13 +2567,14 @@ var SereneXamarin;
                         }
                     });
                 });
+                return _this;
             }
             ResetPasswordPanel.prototype.getFormKey = function () { return Membership.ResetPasswordForm.formKey; };
-            ResetPasswordPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], ResetPasswordPanel);
             return ResetPasswordPanel;
         }(Serenity.PropertyPanel));
+        ResetPasswordPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], ResetPasswordPanel);
         Membership.ResetPasswordPanel = ResetPasswordPanel;
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
 })(SereneXamarin || (SereneXamarin = {}));
@@ -2575,20 +2585,19 @@ var SereneXamarin;
         var SignUpPanel = (function (_super) {
             __extends(SignUpPanel, _super);
             function SignUpPanel(container) {
-                var _this = this;
-                _super.call(this, container);
-                this.form = new Membership.SignUpForm(this.idPrefix);
-                this.form.ConfirmEmail.addValidationRule(this.uniqueName, function (e) {
+                var _this = _super.call(this, container) || this;
+                _this.form = new Membership.SignUpForm(_this.idPrefix);
+                _this.form.ConfirmEmail.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmEmail.value !== _this.form.Email.value) {
                         return Q.text('Validation.EmailConfirm');
                     }
                 });
-                this.form.ConfirmPassword.addValidationRule(this.uniqueName, function (e) {
+                _this.form.ConfirmPassword.addValidationRule(_this.uniqueName, function (e) {
                     if (_this.form.ConfirmPassword.value !== _this.form.Password.value) {
                         return Q.text('Validation.PasswordConfirm');
                     }
                 });
-                this.byId('SubmitButton').click(function (e) {
+                _this.byId('SubmitButton').click(function (e) {
                     e.preventDefault();
                     if (!_this.validateForm()) {
                         return;
@@ -2607,13 +2616,14 @@ var SereneXamarin;
                         }
                     });
                 });
+                return _this;
             }
             SignUpPanel.prototype.getFormKey = function () { return Membership.SignUpForm.formKey; };
-            SignUpPanel = __decorate([
-                Serenity.Decorators.registerClass()
-            ], SignUpPanel);
             return SignUpPanel;
         }(Serenity.PropertyPanel));
+        SignUpPanel = __decorate([
+            Serenity.Decorators.registerClass()
+        ], SignUpPanel);
         Membership.SignUpPanel = SignUpPanel;
     })(Membership = SereneXamarin.Membership || (SereneXamarin.Membership = {}));
 })(SereneXamarin || (SereneXamarin = {}));

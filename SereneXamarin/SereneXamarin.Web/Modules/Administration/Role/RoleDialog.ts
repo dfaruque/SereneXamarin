@@ -12,6 +12,10 @@
 
         protected getToolbarButtons()
         {
+            //let gg = new RoleGrid($('df'));
+            //gg.init();
+            //gg.setItems.setItems();
+
             let buttons = super.getToolbarButtons();
 
             buttons.push({

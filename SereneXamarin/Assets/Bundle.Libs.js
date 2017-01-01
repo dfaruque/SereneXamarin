@@ -63263,7 +63263,8 @@ var Q;
     Q.postToUrl = postToUrl;
     function resolveUrl(url) {
         if (url && url.substr(0, 2) === '~/') {
-            return Q.Config.applicationPath + url.substr(2);
+            //return Q.Config.applicationPath + url.substr(2);
+            return 'http://Serenity.Mobile/' + url.substr(2);
         }
         return url;
     }
@@ -63316,7 +63317,6 @@ var Q;
         var url = options.service;
         if (url && url.length && url.charAt(0) != '~' && url.charAt(0) != '/' && url.indexOf('://') < 0) {
             url = Q.resolveUrl("~/services/") + url;
-            url = url.replace('file://', 'http://');
         }
         options = $.extend({
             dataType: 'json',
