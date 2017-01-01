@@ -88,26 +88,6 @@
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Serenity.Core, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Core.2.7.0\lib\net45\Serenity.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Serenity.Data, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Data.2.7.0\lib\net45\Serenity.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Serenity.Data.Entity, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Data.Entity.2.7.0\lib\net45\Serenity.Data.Entity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Serenity.Services, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Services.2.7.0\lib\net45\Serenity.Services.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Serenity.Web, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Serenity.Web.2.7.0\lib\net45\Serenity.Web.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="StackExchange.Exceptional, Version=1.0.0.122, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\StackExchange.Exceptional.1.0.122\lib\StackExchange.Exceptional.dll</HintPath>
       <Private>True</Private>
@@ -1849,6 +1829,28 @@
     <TypeScriptCompile Include="Scripts\typings\jquery.validation\jquery.validation.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jqueryui\jqueryui.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jspdf\jspdf.autotable.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Serenity\Serenity.Core\Serenity.Core.csproj">
+      <Project>{f76a7628-d2e9-43cc-a3f4-98f76c33dcdb}</Project>
+      <Name>Serenity.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Serenity\Serenity.Data.Entity\Serenity.Data.Entity.csproj">
+      <Project>{7d55c2e1-b805-428e-873a-1efb55c37dea}</Project>
+      <Name>Serenity.Data.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Serenity\Serenity.Data\Serenity.Data.csproj">
+      <Project>{bf7ac82b-3476-4235-8cc2-58bba1c4804b}</Project>
+      <Name>Serenity.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Serenity\Serenity.Services\Serenity.Services.csproj">
+      <Project>{027f4308-30bc-458c-9431-7076fe5c6b64}</Project>
+      <Name>Serenity.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Serenity\Serenity.Web\Serenity.Web.csproj">
+      <Project>{8632943d-2a88-4c83-8451-69d62f059efc}</Project>
+      <Name>Serenity.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -67,6 +67,10 @@
     <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fake\AuthenticationService.cs" />
+    <Compile Include="Fake\AuthorizationService.cs" />
+    <Compile Include="Fake\PermissionService.cs" />
+    <Compile Include="Fake\UserRetrieveService.cs" />
     <Compile Include="MainActivity.cs" />
     <AndroidAsset Include="Assets\ColumnsBundle.js" />
     <AndroidAsset Include="Assets\FormBundle.js" />
@@ -74,8 +78,9 @@
     <AndroidAsset Include="Assets\LocalText.Site.en-US.Public.js" />
     <AndroidAsset Include="Assets\RegisteredScripts.js" />
     <AndroidAsset Include="Assets\TemplateBundle.js" />
-    <AndroidAsset Include="Assets\Bundle.Libs.js" />
-    <AndroidAsset Include="Assets\Bundle.Site.js" />
+    <AndroidAsset Include="Assets\Bundle.Libs.js.download" />
+    <AndroidAsset Include="Assets\Bundle.Site.js.download" />
+    <AndroidResource Include="Resources\raw\defaultdatabase" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="web.config" />
@@ -89,6 +94,7 @@
     <Compile Include="SereneXamarin.Web\Modules\Administration\AdministrationPermissionKeys.cs" />
     <Compile Include="SereneXamarin.Web\Modules\Administration\Role\RoleRepository.cs" />
     <Compile Include="SereneXamarin.Web\Modules\Administration\Role\RoleRow.cs" />
+    <Compile Include="SereneXamarin.Web\Modules\Administration\User\Authentication\UserDefinition.cs" />
     <Compile Include="Views\RazorView.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>RazorView.cshtml</DependentUpon>
@@ -181,6 +187,7 @@
       <Name>Serenity.Services</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

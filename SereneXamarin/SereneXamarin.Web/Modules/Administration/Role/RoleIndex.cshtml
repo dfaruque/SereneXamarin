@@ -2,13 +2,21 @@
 @{
     ViewData["Title"] = Serenity.LocalText.Get("Db.Administration.Role.EntityPlural");
 }
-
+<button onclick="setItemToActiveGrid()">tedsdjk</button>
 <div id="GridDiv"></div>
 
 <script type="text/javascript">
+    var activeGrid = null;
+    function setItemToActiveGrid(jsonGridItems) {
+        if (activeGrid) {
+            activeGrid.setItems([{ RoleId: 1, RoleName: 'Role-1' }]);
+        }
+    }
     jQuery(function () {
-        new SereneXamarin.Administration.RoleGrid($('#GridDiv'), {}).init();
+        activeGrid = new SereneXamarin.Administration.RoleGrid($('#GridDiv'), {});
+        activeGrid.init();
 
         Q.initFullHeightGridPage($('#GridDiv'));
     });
+
 </script>

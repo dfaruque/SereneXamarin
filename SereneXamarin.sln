@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serenity.Data.Entity", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serenity.Services", "..\..\Serenity\Serenity.Services\Serenity.Services.csproj", "{027F4308-30BC-458C-9431-7076FE5C6B64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serenity.Web", "..\..\Serenity\Serenity.Web\Serenity.Web.csproj", "{8632943D-2A88-4C83-8451-69D62F059EFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{027F4308-30BC-458C-9431-7076FE5C6B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{027F4308-30BC-458C-9431-7076FE5C6B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{027F4308-30BC-458C-9431-7076FE5C6B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8632943D-2A88-4C83-8451-69D62F059EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8632943D-2A88-4C83-8451-69D62F059EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8632943D-2A88-4C83-8451-69D62F059EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8632943D-2A88-4C83-8451-69D62F059EFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

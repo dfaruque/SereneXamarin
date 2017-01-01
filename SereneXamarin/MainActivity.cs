@@ -16,6 +16,9 @@ using Serenity.Data;
 using System.IO;
 using Serenity;
 using Mono.Data.Sqlite;
+using System.Data;
+using Serenity.Abstractions;
+using Serenity.Web;
 
 namespace SereneXamarin.Mobile
 {
@@ -50,7 +53,7 @@ namespace SereneXamarin.Mobile
             webView.LoadUrl("file:///android_asset/RazorView.html");
 
         }
-
+        
         private class HybridWebViewClient : WebViewClient
         {
             Context context;
@@ -58,6 +61,17 @@ namespace SereneXamarin.Mobile
             public HybridWebViewClient(Context context) : base()
             {
                 this.context = context;
+
+                if (!Dependency.HasResolver)
+                {
+                    var container = new MunqContainer();
+                    Dependency.SetResolver(container);
+                }
+                var registrar = Dependency.Resolve<IDependencyRegistrar>();
+                registrar.RegisterInstance<IAuthorizationService>(new Administration.AuthorizationService());
+                registrar.RegisterInstance<IAuthenticationService>(new Administration.AuthenticationService());
+                registrar.RegisterInstance<IPermissionService>(new LogicOperatorPermissionService(new Administration.PermissionService()));
+                registrar.RegisterInstance<IUserRetrieveService>(new Administration.UserRetrieveService());
 
             }
 
@@ -114,24 +128,23 @@ namespace SereneXamarin.Mobile
                 WebResourceResponse response = null;
                 if (url.StartsWith("http://Serenity.Mobile/"))
                 {
-                    using (var connection = new SqliteConnection(@"data source = file:///android_asset/Default.db"))
+
+                    using (var connection = GetConnection())
                     {
 
-                        //var c = new RoleRepository().Create(new UnitOfWork(connection),
-                        //    new Serenity.Services.SaveRequest<RoleRow>
-                        //    {
-                        //        Entity = new RoleRow { RoleName = "Rolwsdjfk" }
-                        //    });
+                        var c = new RoleRepository().Create(new UnitOfWork(connection),
+                            new Serenity.Services.SaveRequest<RoleRow>
+                            {
+                                Entity = new RoleRow { RoleName = "Rolwsdjfk" }
+                            });
 
-                        //var data = new RoleRepository().List(connection,
-                        //    new Serenity.Services.ListRequest { });
+                        var data = new RoleRepository().List(connection,
+                            new Serenity.Services.ListRequest { });
 
-                        Serenity.Services.ListResponse<RoleRow> data = new Serenity.Services.ListResponse<RoleRow>();
-                        RoleRow.Fields.Init();
-                        RoleRow.Fields.Initialize();
+                        //Serenity.Services.ListResponse<RoleRow> data = new Serenity.Services.ListResponse<RoleRow>();
 
                         data.Entities = new System.Collections.Generic.List<RoleRow>();
-                        data.Entities.Add(new RoleRow() { RoleId = 1, RoleName = "Role-1" });
+                        data.Entities.Add(new RoleRow { RoleId = 1, RoleName = "Role-1" });
                         data.Entities.Add(new RoleRow { RoleId = 2, RoleName = "Role-2" });
 
                         data.Keys = new System.Collections.Generic.List<long>() { 1, 2 };
@@ -149,7 +162,7 @@ namespace SereneXamarin.Mobile
 
                             //response = new WebResourceResponse(mimeType, encoding, s);
 
-                            view.LoadUrl($"javascript: setDataToActiveGrid('{data.Entities.ToJson()}');");
+                            view.LoadUrl($"javascript: setItemToActiveGrid('{data.Entities.ToJson()}');");
 
                             return response;
                         }
@@ -169,6 +182,49 @@ namespace SereneXamarin.Mobile
                 writer.Flush();
                 stream.Position = 0;
                 return stream;
+            }
+            #region ISQLite implementation
+            public IDbConnection GetConnection()
+            {
+                var sqliteFilename = "defaultdatabase.db3";
+                string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal); // Documents folder
+                var path = Path.Combine(documentsPath, sqliteFilename);
+
+                // This is where we copy in the prepopulated database
+                Console.WriteLine(path);
+                if (!File.Exists(path))
+                {
+                    var s = this.context.Resources.OpenRawResource(Resource.Raw.defaultdatabase);  // RESOURCE NAME ###
+
+                    // create a write stream
+                    FileStream writeStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+                    // write to the stream
+                    ReadWriteStream(s, writeStream);
+                }
+
+                var conn = new SqliteConnection($@"data source = {path}");
+
+                // Return the database connection 
+                return conn;
+            }
+            #endregion
+
+            /// <summary>
+            /// helper method to get the database out of /raw/ and into the user filesystem
+            /// </summary>
+            void ReadWriteStream(Stream readStream, Stream writeStream)
+            {
+                int Length = 256;
+                Byte[] buffer = new Byte[Length];
+                int bytesRead = readStream.Read(buffer, 0, Length);
+                // write the required bytes
+                while (bytesRead > 0)
+                {
+                    writeStream.Write(buffer, 0, bytesRead);
+                    bytesRead = readStream.Read(buffer, 0, Length);
+                }
+                readStream.Close();
+                writeStream.Close();
             }
 
             public override WebResourceResponse ShouldInterceptRequest(WebView view, IWebResourceRequest request)
