@@ -42,7 +42,7 @@ namespace SereneXamarin.Mobile
 
             // Use subclassed WebViewClient to intercept hybrid native calls
             webView.SetWebViewClient(new HybridWebViewClient(webView.Context));
-
+            DependancyResolve();
             // Render the view from the type generated from RazorView.cshtml
             ////var model = new Model1() { Text = "Text goes here" };
             ////var template = new RazorView() { Model = model };
@@ -54,6 +54,26 @@ namespace SereneXamarin.Mobile
 
         }
 
+        private static void DependancyResolve()
+        {
+            if (!Dependency.HasResolver)
+            {
+                var container = new MunqContainer();
+                Dependency.SetResolver(container);
+            }
+            var registrar = Dependency.Resolve<IDependencyRegistrar>();
+            registrar.RegisterInstance<IAuthorizationService>(new Fake.AuthorizationService());
+            registrar.RegisterInstance<IAuthenticationService>(new Fake.AuthenticationService());
+            registrar.RegisterInstance<IPermissionService>(new LogicOperatorPermissionService(new Fake.PermissionService()));
+            registrar.RegisterInstance<IUserRetrieveService>(new Fake.UserRetrieveService());
+
+            if (Dependency.TryResolve<ILocalCache>() == null)
+                registrar.RegisterInstance<ILocalCache>(new Fake.LocalCache());
+
+            if (Dependency.TryResolve<IDistributedCache>() == null)
+                registrar.RegisterInstance<IDistributedCache>(new Fake.DistributedCacheEmulator());
+        }
+
         private class HybridWebViewClient : WebViewClient
         {
             Context context;
@@ -62,22 +82,7 @@ namespace SereneXamarin.Mobile
             {
                 this.context = context;
 
-                if (!Dependency.HasResolver)
-                {
-                    var container = new MunqContainer();
-                    Dependency.SetResolver(container);
-                }
-                var registrar = Dependency.Resolve<IDependencyRegistrar>();
-                registrar.RegisterInstance<IAuthorizationService>(new Fake.AuthorizationService());
-                registrar.RegisterInstance<IAuthenticationService>(new Fake.AuthenticationService());
-                registrar.RegisterInstance<IPermissionService>(new LogicOperatorPermissionService(new Fake.PermissionService()));
-                registrar.RegisterInstance<IUserRetrieveService>(new Fake.UserRetrieveService());
-
-                if (Dependency.TryResolve<ILocalCache>() == null)
-                    registrar.RegisterInstance<ILocalCache>(new Fake.LocalCache());
-
-                if (Dependency.TryResolve<IDistributedCache>() == null)
-                    registrar.RegisterInstance<IDistributedCache>(new Fake.DistributedCacheEmulator());
+                
 
             }
 
