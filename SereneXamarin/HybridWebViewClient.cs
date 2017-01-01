@@ -1,24 +1,16 @@
-using System;
-using Android.App;
 using Android.Content;
-using Android.Runtime;
-using Android.Views;
-using Android.Webkit;
-using Android.Widget;
-using Android.OS;
-using SereneXamarin.Mobile.Views;
-using SereneXamarin.Mobile.Models;
-using Android.Util;
 using Android.Net;
-using SereneXamarin.Administration.Repositories;
-using SereneXamarin.Administration.Entities;
-using Serenity.Data;
-using System.IO;
-using Serenity;
+using Android.OS;
+using Android.Webkit;
 using Mono.Data.Sqlite;
+using SereneXamarin.Administration.Entities;
+using SereneXamarin.Administration.Repositories;
+using Serenity;
+using Serenity.Data;
+using System;
+using System.Collections.Generic;
 using System.Data;
-using Serenity.Abstractions;
-using Serenity.Web;
+using System.IO;
 
 namespace SereneXamarin.Mobile
 {
@@ -34,6 +26,17 @@ namespace SereneXamarin.Mobile
 
         }
 
+        public override void OnPageFinished(WebView view, string url)
+        {
+            base.OnPageFinished(view, url);
+            view.LoadUrl("javascript:$(document).ajaxStart(function (event, request, settings) { " +
+                    "ajaxHandler.ajaxBegin(); " + // Event called when an AJAX call begins
+                    "});");
+            view.LoadUrl("javascript:$(document).ajaxComplete(function (event, request, settings) { " +
+                    "ajaxHandler.ajaxDone(); " + // Event called when an AJAX call ends
+                    "});");
+
+        }
 
         public override bool ShouldOverrideUrlLoading(WebView webView, string url)
         {
@@ -92,6 +95,27 @@ namespace SereneXamarin.Mobile
                 {
                     var data = new RoleRepository().List(connection,
                         new Serenity.Services.ListRequest { });
+
+                    var mimeType = "application/json";
+                    var encoding = "utf-8";
+                    Dictionary<string, string> responseHeaders = new Dictionary<string, string>();
+                    responseHeaders.Add("Cache-Control", "private, s-maxage=0");
+                    responseHeaders.Add("Content-Type", "application/json; charset=utf-8");
+
+                    var header = @"HTTP/1.1 200 OK
+Cache-Control: private, s-maxage=0
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+X-AspNetMvc-Version: 5.2
+X-AspNet-Version: 4.0.30319
+X-SourceFiles: =?UTF-8?B?RTpcU2VyZW5pdHktWGFtYXJpblxTZXJlbmVYYW1hcmluXFNlcmVuZVhhbWFyaW5cU2VyZW5lWGFtYXJpbi5XZWJcU2VydmljZXNcQWRtaW5pc3RyYXRpb25cUm9sZVxMaXN0?=
+X-Powered-By: ASP.NET
+Date: Sun, 01 Jan 2017 14:29:28 GMT
+Content-Length: 50";
+                    
+                    //response = new WebResourceResponse(mimeType, encoding, GenerateStreamFromString(data.ToString()));
+                    //response.ResponseHeaders = responseHeaders;
+                    //response.SetStatusCodeAndReasonPhrase(200, "HTTP/1.1 200 OK");
 
                     view.LoadUrl($"javascript: setItemToActiveGrid('{data.Entities.ToJson()}');");
 

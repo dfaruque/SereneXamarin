@@ -75,6 +75,7 @@
     <Compile Include="Fake\UserRetrieveService.cs" />
     <Compile Include="HybridWebChromeClient.cs" />
     <Compile Include="HybridWebViewClient.cs" />
+    <Compile Include="AjaxHandler.cs" />
     <Compile Include="MainActivity.cs" />
     <AndroidAsset Include="Assets\ColumnsBundle.js" />
     <AndroidAsset Include="Assets\FormBundle.js" />

@@ -49,6 +49,9 @@ namespace SereneXamarin.Mobile
             ////var template = new RazorView() { Model = model };
             ////var page = template.GenerateString();
 
+            // add javascript interface
+            webView.AddJavascriptInterface(new AjaxHandler(this), "ajaxHandler");
+
             // Load the rendered HTML into the view with a base URL 
             // that points to the root of the bundled Assets folder
             webView.LoadUrl("file:///android_asset/RazorView.html");
