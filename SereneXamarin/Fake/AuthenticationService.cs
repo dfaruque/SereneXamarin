@@ -1,11 +1,6 @@
-﻿namespace SereneXamarin.Administration
+﻿namespace SereneXamarin.Mobile.Fake
 {
-    using Entities;
-    using Repositories;
-    using Serenity;
     using Serenity.Abstractions;
-    using Serenity.Data;
-    using System;
 
     public class AuthenticationService : IAuthenticationService
     {

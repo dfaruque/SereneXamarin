@@ -1,10 +1,7 @@
-﻿namespace SereneXamarin.Administration
+﻿namespace SereneXamarin.Mobile.Fake
 {
     using Serenity;
     using Serenity.Abstractions;
-    using Serenity.Data;
-    using System;
-    using System.Data;
 
     public class UserRetrieveService : IUserRetrieveService
     {

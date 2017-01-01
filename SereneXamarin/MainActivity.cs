@@ -53,7 +53,7 @@ namespace SereneXamarin.Mobile
             webView.LoadUrl("file:///android_asset/RazorView.html");
 
         }
-        
+
         private class HybridWebViewClient : WebViewClient
         {
             Context context;
@@ -68,12 +68,19 @@ namespace SereneXamarin.Mobile
                     Dependency.SetResolver(container);
                 }
                 var registrar = Dependency.Resolve<IDependencyRegistrar>();
-                registrar.RegisterInstance<IAuthorizationService>(new Administration.AuthorizationService());
-                registrar.RegisterInstance<IAuthenticationService>(new Administration.AuthenticationService());
-                registrar.RegisterInstance<IPermissionService>(new LogicOperatorPermissionService(new Administration.PermissionService()));
-                registrar.RegisterInstance<IUserRetrieveService>(new Administration.UserRetrieveService());
+                registrar.RegisterInstance<IAuthorizationService>(new Fake.AuthorizationService());
+                registrar.RegisterInstance<IAuthenticationService>(new Fake.AuthenticationService());
+                registrar.RegisterInstance<IPermissionService>(new LogicOperatorPermissionService(new Fake.PermissionService()));
+                registrar.RegisterInstance<IUserRetrieveService>(new Fake.UserRetrieveService());
+
+                if (Dependency.TryResolve<ILocalCache>() == null)
+                    registrar.RegisterInstance<ILocalCache>(new Fake.LocalCache());
+
+                if (Dependency.TryResolve<IDistributedCache>() == null)
+                    registrar.RegisterInstance<IDistributedCache>(new Fake.DistributedCacheEmulator());
 
             }
+
 
             public override bool ShouldOverrideUrlLoading(WebView webView, string url)
             {
@@ -126,51 +133,32 @@ namespace SereneXamarin.Mobile
             public override WebResourceResponse ShouldInterceptRequest(WebView view, string url)
             {
                 WebResourceResponse response = null;
-                if (url.StartsWith("http://Serenity.Mobile/"))
+                using (var connection = GetConnection())
                 {
-
-                    using (var connection = GetConnection())
+                    if (url.Equals("http://Serenity.Mobile/Services/Administration/Role/List", StringComparison.OrdinalIgnoreCase))
                     {
-
-                        var c = new RoleRepository().Create(new UnitOfWork(connection),
-                            new Serenity.Services.SaveRequest<RoleRow>
-                            {
-                                Entity = new RoleRow { RoleName = "Rolwsdjfk" }
-                            });
-
                         var data = new RoleRepository().List(connection,
                             new Serenity.Services.ListRequest { });
 
-                        //Serenity.Services.ListResponse<RoleRow> data = new Serenity.Services.ListResponse<RoleRow>();
+                        view.LoadUrl($"javascript: setItemToActiveGrid('{data.Entities.ToJson()}');");
 
-                        data.Entities = new System.Collections.Generic.List<RoleRow>();
-                        data.Entities.Add(new RoleRow { RoleId = 1, RoleName = "Role-1" });
-                        data.Entities.Add(new RoleRow { RoleId = 2, RoleName = "Role-2" });
-
-                        data.Keys = new System.Collections.Generic.List<long>() { 1, 2 };
-                        data.Skip = 0;
-                        data.Take = 100;
-                        data.TotalCount = 2;
-
-                        data.Error = new Serenity.Services.ServiceError { Code = "df", Message = "fasdfa sd", Details = "fdas fds" };
-
-                        //using (
-                        //Stream s = GenerateStreamFromString(data.ToJson()); //)
-                        {
-                            String encoding = "UTF-8";
-                            String mimeType = "application/json";
-
-                            //response = new WebResourceResponse(mimeType, encoding, s);
-
-                            view.LoadUrl($"javascript: setItemToActiveGrid('{data.Entities.ToJson()}');");
-
-                            return response;
-                        }
                     }
-                }
-                //int statusCode = okResponse.code();
-                String reasonPhrase = "OK";
+                    else if (url.Equals("http://Serenity.Mobile/Services/Administration/Role/Create", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var uow = new UnitOfWork(connection);
+                        var c = new RoleRepository().Create(uow,
+                            new Serenity.Services.SaveRequest<RoleRow>
+                            {
+                                Entity = new RoleRow { RoleName = "vbgRolwsxcvbdjfk" }
+                            });
 
+                        uow.Commit();
+                        view.LoadUrl($"javascript: setItemToActiveGrid('{c.ToJson()}');");
+
+
+                    }
+                    return response;
+                }
 
                 return base.ShouldInterceptRequest(view, url);
             }
@@ -202,10 +190,10 @@ namespace SereneXamarin.Mobile
                     ReadWriteStream(s, writeStream);
                 }
 
-                var conn = new SqliteConnection($@"data source = {path}");
+                var connection = new SqliteConnection($@"data source = {path}");
 
-                // Return the database connection 
-                return conn;
+                // Return the database connection as WrappedConnection
+                return new WrappedConnection(connection, new SqliteDialect());
             }
             #endregion
 

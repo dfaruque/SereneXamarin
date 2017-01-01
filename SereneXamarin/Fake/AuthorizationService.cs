@@ -1,6 +1,5 @@
-﻿namespace SereneXamarin.Administration
+﻿namespace SereneXamarin.Mobile.Fake
 {
-    using Serenity;
     using Serenity.Abstractions;
 
     public class AuthorizationService : IAuthorizationService

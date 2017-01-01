@@ -1,11 +1,6 @@
-﻿namespace SereneXamarin.Administration
+﻿namespace SereneXamarin.Mobile.Fake
 {
-    using SereneXamarin.Administration.Entities;
-    using Serenity;
     using Serenity.Abstractions;
-    using Serenity.Data;
-    using System;
-    using System.Collections.Generic;
 
     public class PermissionService : IPermissionService
     {

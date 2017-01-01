@@ -69,6 +69,8 @@
   <ItemGroup>
     <Compile Include="Fake\AuthenticationService.cs" />
     <Compile Include="Fake\AuthorizationService.cs" />
+    <Compile Include="Fake\DistributedCacheEmulator.cs" />
+    <Compile Include="Fake\FakeLocalCache.cs" />
     <Compile Include="Fake\PermissionService.cs" />
     <Compile Include="Fake\UserRetrieveService.cs" />
     <Compile Include="MainActivity.cs" />
