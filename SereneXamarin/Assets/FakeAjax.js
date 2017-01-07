@@ -4,17 +4,26 @@
         var self = this;
         this.handlers = {};
         $.ajax = function (settings) {
-            var url = settings.url;
-            var handler = self.handlers[url];
-            if (!handler) {
-                throw new Error("No fake handler registered for ajax URL: " + url + ", request: " +
-                    JSON.stringify(settings, null, "    "));
-            }
+            //var url = settings.url;
+            //var handler = self.handlers[url];
+            //if (!handler) {
+            //    throw new Error("No fake handler registered for ajax URL: " + url + ", request: " +
+            //        JSON.stringify(settings, null, "    "));
+            //}
+
             var xhr = {
                 fail: function () {
                 }
             };
-            var result = handler(settings);
+
+            var jsonToURI = function (json) { return encodeURIComponent(JSON.stringify(json)); }
+            var uriToJSON = function (urijson) { return JSON.parse(decodeURIComponent(urijson)); }
+
+            var uri = 'FakeAjax:' + settings.url + '?' + jsonToURI(settings.request);
+            window.location.href = uri;
+
+            var result = {Error: 'asdf'};// handler(settings);
+
             settings.success(result, '200', xhr);
             return xhr;
         };
