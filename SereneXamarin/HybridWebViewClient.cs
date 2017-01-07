@@ -3,10 +3,12 @@ using Android.Net;
 using Android.OS;
 using Android.Webkit;
 using Mono.Data.Sqlite;
+using Newtonsoft.Json;
 using SereneXamarin.Administration.Entities;
 using SereneXamarin.Administration.Repositories;
 using Serenity;
 using Serenity.Data;
+using Serenity.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,12 +31,12 @@ namespace SereneXamarin.Mobile
         public override void OnPageFinished(WebView view, string url)
         {
             base.OnPageFinished(view, url);
-            view.LoadUrl("javascript:$(document).ajaxStart(function (event, request, settings) { " +
-                    "ajaxHandler.ajaxBegin(); " + // Event called when an AJAX call begins
-                    "});");
-            view.LoadUrl("javascript:$(document).ajaxComplete(function (event, request, settings) { " +
-                    "ajaxHandler.ajaxDone(); " + // Event called when an AJAX call ends
-                    "});");
+            //view.LoadUrl("javascript:$(document).ajaxStart(function (event, request, settings) { " +
+            //        "ajaxHandler.ajaxBegin(); " + // Event called when an AJAX call begins
+            //        "});");
+            //view.LoadUrl("javascript:$(document).ajaxComplete(function (event, request, settings) { " +
+            //        "ajaxHandler.ajaxDone(); " + // Event called when an AJAX call ends
+            //        "});");
 
         }
 
@@ -88,50 +90,50 @@ namespace SereneXamarin.Mobile
         }
         public override WebResourceResponse ShouldInterceptRequest(WebView view, string url)
         {
-
-
-            WebResourceResponse response = null;
-            using (var connection = GetConnection())
+            var resources = url.Split('?');
+            var method = resources[0];
+            if (resources.Length > 1 && method.StartsWith("http://Serenity.Mobile/Services/", StringComparison.OrdinalIgnoreCase))
             {
-                if (url.Equals("http://Serenity.Mobile/Services/Administration/Role/List", StringComparison.OrdinalIgnoreCase))
+                var requestJson = System.Web.HttpUtility.UrlDecode(resources[1]);
+                var requestObj = JsonConvert.DeserializeObject(requestJson);
+
+
+                WebResourceResponse response = null;
+                using (var connection = GetConnection())
                 {
-                    var data = new RoleRepository().List(connection,
-                        new Serenity.Services.ListRequest { });
+                    if (method.Equals("http://Serenity.Mobile/Services/Administration/Role/List", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var data = new RoleRepository().List(connection,
+                            requestObj as ListRequest);
 
-                    //var mimeType = "application/json";
-                    //var encoding = "utf-8";
-                    //Dictionary<string, string> responseHeaders = new Dictionary<string, string>();
-                    //responseHeaders.Add("Cache-Control", "private, s-maxage=0");
-                    //responseHeaders.Add("Content-Type", "application/json; charset=utf-8");
+                        //var mimeType = "application/json";
+                        //var encoding = "utf-8";
+                        //Dictionary<string, string> responseHeaders = new Dictionary<string, string>();
+                        //responseHeaders.Add("Cache-Control", "private, s-maxage=0");
+                        //responseHeaders.Add("Content-Type", "application/json; charset=utf-8");
 
-                    //response = new WebResourceResponse(mimeType, encoding, GenerateStreamFromString(data.ToString()));
-                    //response.ResponseHeaders = responseHeaders;
-                    //response.SetStatusCodeAndReasonPhrase(200, "HTTP/1.1 200 OK");
+                        //response = new WebResourceResponse(mimeType, encoding, GenerateStreamFromString(data.ToString()));
+                        //response.ResponseHeaders = responseHeaders;
+                        //response.SetStatusCodeAndReasonPhrase(200, "HTTP/1.1 200 OK");
 
-                    view.LoadUrl($"javascript: setItemToActiveGrid('{data.Entities.ToJson()}');");
+                        view.LoadUrl($"javascript: setItemToActiveGrid('{data.Entities.ToJson()}');");
 
+                    }
+                    else if (method.Equals("http://Serenity.Mobile/Services/Administration/Role/Create", StringComparison.OrdinalIgnoreCase))
+                    {
+
+                        var uow = new UnitOfWork(connection);
+                        var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
+                        var c = new RoleRepository().Create(uow, req);
+
+                        uow.Commit();
+                        view.LoadUrl($"javascript: setItemToActiveGrid('{c.ToJson()}');");
+
+
+                    }
+                    return response;
                 }
-                else if (url.Equals("http://Serenity.Mobile/Services/Administration/Role/Create", StringComparison.OrdinalIgnoreCase))
-                {
-                    var resources = url.Split('?');
-                    var method = resources[0];
-                    var request = System.Web.HttpUtility.UrlDecode(resources[1]);
-
-                    var uow = new UnitOfWork(connection);
-                    var c = new RoleRepository().Create(uow,
-                        new Serenity.Services.SaveRequest<RoleRow>
-                        {
-                            Entity = new RoleRow { RoleName = "vbgRolwsxcvbdjfk" }
-                        });
-
-                    uow.Commit();
-                    view.LoadUrl($"javascript: setItemToActiveGrid('{c.ToJson()}');");
-
-
-                }
-                return response;
             }
-
             return base.ShouldInterceptRequest(view, url);
         }
         public static Stream GenerateStreamFromString(string s)

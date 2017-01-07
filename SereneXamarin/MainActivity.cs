@@ -36,9 +36,9 @@ namespace SereneXamarin.Mobile
             var webView = FindViewById<WebView>(Resource.Id.webView);
             webView.Settings.JavaScriptEnabled = true;
 
-            //WebView.SetWebContentsDebuggingEnabled(true);
-            //var hybridWebChromeClient = new HybridWebChromeClient(webView.Context);
-            //webView.SetWebChromeClient(hybridWebChromeClient);
+            WebView.SetWebContentsDebuggingEnabled(true);
+            var hybridWebChromeClient = new HybridWebChromeClient(webView.Context);
+            webView.SetWebChromeClient(hybridWebChromeClient);
 
             // Use subclassed WebViewClient to intercept hybrid native calls
             webView.SetWebViewClient(new HybridWebViewClient(webView.Context));

@@ -63324,7 +63324,7 @@ var Q;
         var jsonToURI = function (json) { return encodeURIComponent(JSON.stringify(json)); }
         var uriToJSON = function (urijson) { return JSON.parse(decodeURIComponent(urijson)); }
 
-        url += '?request=' encodeURIComponent(options.request);
+        url += '?' + jsonToURI(options.request);
 
         options = $.extend({
             dataType: 'json',
