@@ -1,6 +1,23 @@
-﻿var FakeAjax = (function () {
+﻿var FakeAjaxHandler = {};
+var FakeXHR = {
+    fail: function () {
+
+    },
+    abort: function () {
+
+    }
+};
+
+var submitFakeAjaxResponse = function (requestedUrl, responseJson) {
+    var response = JSON.parse(responseJson);
+    FakeAjaxHandler[requestedUrl].success(response, '200', FakeXHR);
+};
+
+var FakeAjax = (function () {
     function FakeAjax() {
         this.oldAjax = $.ajax;
+        Q.Config.applicationPath = 'fakeajax:';
+
         var self = this;
         this.handlers = {};
         $.ajax = function (settings) {
@@ -11,20 +28,22 @@
             //        JSON.stringify(settings, null, "    "));
             //}
 
-            var xhr = {
-                fail: function () {
-                }
-            };
+
 
             var jsonToURI = function (json) { return encodeURIComponent(JSON.stringify(json)); }
             var uriToJSON = function (urijson) { return JSON.parse(decodeURIComponent(urijson)); }
-
-            var uri = 'FakeAjax:' + settings.url + '?' + jsonToURI(settings.request);
+            if (settings.url && settings.url.substr(0, 2) === '~/') {
+                settings.url = 'FakeAjax:' + settings.substr(2);
+            }
+            var uri = settings.url + '?' + jsonToURI(settings.request);
             window.location.href = uri;
 
             var result = {Error: 'asdf'};// handler(settings);
 
-            settings.success(result, '200', xhr);
+            FakeAjaxHandler[settings.url] = settings;
+            var xhr = FakeXHR;
+            //settings.success(result, '200', xhr);
+
             return xhr;
         };
     }

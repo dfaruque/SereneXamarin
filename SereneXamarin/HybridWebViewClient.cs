@@ -43,18 +43,19 @@ namespace SereneXamarin.Mobile
         public override bool ShouldOverrideUrlLoading(WebView webView, string url)
         {
             // If the URL is not our own custom scheme, just let the webView load the URL as usual
-            var scheme = "http://Serenity.Mobile/";
+            var scheme = "fakeajax:services/";
 
-            ////if (!url.StartsWith(scheme))
-            ////    return false;
+            if (!url.StartsWith(scheme, StringComparison.OrdinalIgnoreCase))
+                return false;
 
             //if (IsNetworkConnected(this.context))
             //    return false;
 
             //// This handler will treat everything between the protocol and "?"
             //// as the method name.  The querystring has all of the parameters.
-            var resources = url.Substring(scheme.Length).Split('?');
-            var method = resources[0];
+            var resources = url.Split('?');
+            var requestUrl = resources[0];
+            var method = requestUrl.Substring(scheme.Length);
             //var parameters = System.Web.HttpUtility.ParseQueryString(resources[1]);
 
             //if (method == "UpdateLabel")
@@ -71,45 +72,68 @@ namespace SereneXamarin.Mobile
             //    webView.LoadUrl("javascript:" + js);
             //}
 
-            if (resources.Length > 1 && method.StartsWith("http://Serenity.Mobile/Services/", StringComparison.OrdinalIgnoreCase))
+            //if (resources.Length > 1 && method.StartsWith("http://Serenity.Mobile/Services/", StringComparison.OrdinalIgnoreCase))
+            //{
+            var requestJson = System.Web.HttpUtility.UrlDecode(resources[1]);
+            string responseJson = string.Empty;
+
+            using (var connection = GetConnection())
             {
-                var requestJson = System.Web.HttpUtility.UrlDecode(resources[1]);
-                var requestObj = JsonConvert.DeserializeObject(requestJson);
-
-                using (var connection = GetConnection())
+                if (method.Equals("Administration/Role/List", StringComparison.OrdinalIgnoreCase))
                 {
-                    if (method.Equals("http://Serenity.Mobile/Services/Administration/Role/List", StringComparison.OrdinalIgnoreCase))
-                    {
-                        var data = new RoleRepository().List(connection,
-                            requestObj as ListRequest);
+                    ListRequest requestObj;
+                    if (requestJson.Equals("undefined"))
+                        requestObj = new ListRequest();
+                    else
+                        requestObj = JsonConvert.DeserializeObject<ListRequest>(requestJson);
 
-                        //var mimeType = "application/json";
-                        //var encoding = "utf-8";
-                        //Dictionary<string, string> responseHeaders = new Dictionary<string, string>();
-                        //responseHeaders.Add("Cache-Control", "private, s-maxage=0");
-                        //responseHeaders.Add("Content-Type", "application/json; charset=utf-8");
+                    var response = new RoleRepository().List(connection,
+                        requestObj);
+                    responseJson = response.ToJson();
+                }
+                else if (method.Equals("Administration/Role/Create", StringComparison.OrdinalIgnoreCase))
+                {
 
-                        //response = new WebResourceResponse(mimeType, encoding, GenerateStreamFromString(data.ToString()));
-                        //response.ResponseHeaders = responseHeaders;
-                        //response.SetStatusCodeAndReasonPhrase(200, "HTTP/1.1 200 OK");
+                    var uow = new UnitOfWork(connection);
+                    var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
+                    var response = new RoleRepository().Create(uow, req);
 
-                        webView.LoadUrl($"javascript: setItemToActiveGrid('{data.Entities.ToJson()}');");
+                    uow.Commit();
 
-                    }
-                    else if (method.Equals("http://Serenity.Mobile/Services/Administration/Role/Create", StringComparison.OrdinalIgnoreCase))
-                    {
+                    responseJson = response.ToJson();
 
-                        var uow = new UnitOfWork(connection);
-                        var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
-                        var c = new RoleRepository().Create(uow, req);
+                }
+                else if (method.Equals("Administration/Role/Update", StringComparison.OrdinalIgnoreCase))
+                {
 
-                        uow.Commit();
-                        webView.LoadUrl($"javascript: setItemToActiveGrid('{c.ToJson()}');");
+                    var uow = new UnitOfWork(connection);
+                    var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
+                    var response = new RoleRepository().Update(uow, req);
 
+                    uow.Commit();
+                    responseJson = response.ToJson();
+                }
+                else if (method.Equals("Administration/Role/Retrieve", StringComparison.OrdinalIgnoreCase))
+                {
+                    var req = JsonConvert.DeserializeObject<RetrieveRequest>(requestJson);
+                    var response = new RoleRepository().Retrieve(connection, req);
 
-                    }
+                    responseJson = response.ToJson();
+                }
+                else if (method.Equals("Administration/Role/Delete", StringComparison.OrdinalIgnoreCase))
+                {
+
+                    var uow = new UnitOfWork(connection);
+                    var req = JsonConvert.DeserializeObject<DeleteRequest>(requestJson);
+                    var response = new RoleRepository().Delete(uow, req);
+
+                    uow.Commit();
+                    responseJson = response.ToJson();
                 }
             }
+            //}
+            webView.LoadUrl($"javascript: submitFakeAjaxResponse('{requestUrl}', '{responseJson}');");
+
             return true;
         }
         //override 
