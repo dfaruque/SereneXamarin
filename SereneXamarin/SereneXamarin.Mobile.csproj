@@ -67,12 +67,12 @@
     <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fake\AuthenticationService.cs" />
-    <Compile Include="Fake\AuthorizationService.cs" />
-    <Compile Include="Fake\DistributedCacheEmulator.cs" />
-    <Compile Include="Fake\FakeLocalCache.cs" />
-    <Compile Include="Fake\PermissionService.cs" />
-    <Compile Include="Fake\UserRetrieveService.cs" />
+    <Compile Include="Fakes\AuthenticationService.cs" />
+    <Compile Include="Fakes\AuthorizationService.cs" />
+    <Compile Include="Fakes\DistributedCacheEmulator.cs" />
+    <Compile Include="Fakes\FakeLocalCache.cs" />
+    <Compile Include="Fakes\PermissionService.cs" />
+    <Compile Include="Fakes\UserRetrieveService.cs" />
     <Compile Include="HybridWebChromeClient.cs" />
     <Compile Include="HybridWebViewClient.cs" />
     <Compile Include="AjaxHandler.cs" />

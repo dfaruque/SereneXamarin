@@ -88,6 +88,8 @@ namespace SereneXamarin.Mobile
         }
         public override WebResourceResponse ShouldInterceptRequest(WebView view, string url)
         {
+
+
             WebResourceResponse response = null;
             using (var connection = GetConnection())
             {
@@ -96,23 +98,12 @@ namespace SereneXamarin.Mobile
                     var data = new RoleRepository().List(connection,
                         new Serenity.Services.ListRequest { });
 
-                    var mimeType = "application/json";
-                    var encoding = "utf-8";
-                    Dictionary<string, string> responseHeaders = new Dictionary<string, string>();
-                    responseHeaders.Add("Cache-Control", "private, s-maxage=0");
-                    responseHeaders.Add("Content-Type", "application/json; charset=utf-8");
+                    //var mimeType = "application/json";
+                    //var encoding = "utf-8";
+                    //Dictionary<string, string> responseHeaders = new Dictionary<string, string>();
+                    //responseHeaders.Add("Cache-Control", "private, s-maxage=0");
+                    //responseHeaders.Add("Content-Type", "application/json; charset=utf-8");
 
-                    var header = @"HTTP/1.1 200 OK
-Cache-Control: private, s-maxage=0
-Content-Type: application/json; charset=utf-8
-Server: Microsoft-IIS/10.0
-X-AspNetMvc-Version: 5.2
-X-AspNet-Version: 4.0.30319
-X-SourceFiles: =?UTF-8?B?RTpcU2VyZW5pdHktWGFtYXJpblxTZXJlbmVYYW1hcmluXFNlcmVuZVhhbWFyaW5cU2VyZW5lWGFtYXJpbi5XZWJcU2VydmljZXNcQWRtaW5pc3RyYXRpb25cUm9sZVxMaXN0?=
-X-Powered-By: ASP.NET
-Date: Sun, 01 Jan 2017 14:29:28 GMT
-Content-Length: 50";
-                    
                     //response = new WebResourceResponse(mimeType, encoding, GenerateStreamFromString(data.ToString()));
                     //response.ResponseHeaders = responseHeaders;
                     //response.SetStatusCodeAndReasonPhrase(200, "HTTP/1.1 200 OK");
@@ -122,6 +113,10 @@ Content-Length: 50";
                 }
                 else if (url.Equals("http://Serenity.Mobile/Services/Administration/Role/Create", StringComparison.OrdinalIgnoreCase))
                 {
+                    var resources = url.Split('?');
+                    var method = resources[0];
+                    var request = System.Web.HttpUtility.UrlDecode(resources[1]);
+
                     var uow = new UnitOfWork(connection);
                     var c = new RoleRepository().Create(uow,
                         new Serenity.Services.SaveRequest<RoleRow>
