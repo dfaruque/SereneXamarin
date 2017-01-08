@@ -1,2 +1,2 @@
 # SereneXamarin
-Serenity.IS port to Xamarin
+Serenity.is port to Xamarin
