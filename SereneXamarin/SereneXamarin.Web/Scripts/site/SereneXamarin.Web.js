@@ -2357,12 +2357,27 @@ var SereneXamarin;
         Common.ReportPage = ReportPage;
     })(Common = SereneXamarin.Common || (SereneXamarin.Common = {}));
 })(SereneXamarin || (SereneXamarin = {}));
+var g_currentGrid;
 var SereneXamarin;
 (function (SereneXamarin) {
     var ScriptInitialization;
     (function (ScriptInitialization) {
         Q.Config.responsiveDialogs = true;
         Q.Config.rootNamespaces.push('SereneXamarin');
+        window.onhashchange = function (ev) {
+            var newURL = ev.newURL.split('#');
+            if (newURL.length > 0) {
+                var hash = newURL[1];
+                var hash2 = hash.split('/');
+                var moduleName = hash2[0];
+                var gridName = hash2[1] + 'Grid';
+                var gridContainer = $('#GridDiv');
+                if (g_currentGrid && g_currentGrid.destroy)
+                    g_currentGrid.destroy();
+                g_currentGrid = new SereneXamarin[moduleName][gridName](gridContainer);
+                Q.initFullHeightGridPage(gridContainer);
+            }
+        };
     })(ScriptInitialization = SereneXamarin.ScriptInitialization || (SereneXamarin.ScriptInitialization = {}));
 })(SereneXamarin || (SereneXamarin = {}));
 var SereneXamarin;

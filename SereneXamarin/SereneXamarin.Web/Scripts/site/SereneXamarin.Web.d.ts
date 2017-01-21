@@ -915,6 +915,7 @@ declare namespace SereneXamarin.Common {
         protected reportLinkClick(e: any): void;
     }
 }
+declare var g_currentGrid: Serenity.EntityGrid<any, any>;
 declare namespace SereneXamarin.ScriptInitialization {
 }
 declare namespace SereneXamarin.Common {
