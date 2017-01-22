@@ -72,6 +72,8 @@
     <Compile Include="Fakes\AuthorizationService.cs" />
     <Compile Include="Fakes\DistributedCacheEmulator.cs" />
     <Compile Include="Fakes\FakeLocalCache.cs" />
+    <Compile Include="Fakes\Navigation\NavigatinoItem.cs" />
+    <Compile Include="Fakes\Navigation\NavigationModel.cs" />
     <Compile Include="Fakes\PermissionService.cs" />
     <Compile Include="Fakes\UserRetrieveService.cs" />
     <Compile Include="HybridWebChromeClient.cs" />
@@ -120,6 +122,11 @@
     <AndroidAsset Include="Assets\TemplateBundle.js.download" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
+    <None Include="Views\LayoutSPA.cshtml">
+      <SubType>Code</SubType>
+      <Generator>RazorTemplatePreprocessor</Generator>
+      <LastGenOutput>LayoutSPA.generated.cs</LastGenOutput>
+    </None>
     <None Include="web.config" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,7 +138,14 @@
     <Compile Include="SereneXamarin.Web\Modules\Administration\AdministrationPermissionKeys.cs" />
     <Compile Include="SereneXamarin.Web\Modules\Administration\Role\RoleRepository.cs" />
     <Compile Include="SereneXamarin.Web\Modules\Administration\Role\RoleRow.cs" />
+    <Compile Include="SereneXamarin.Web\Modules\Administration\UserPermission\UserPermissionRow.cs" />
     <Compile Include="SereneXamarin.Web\Modules\Administration\User\Authentication\UserDefinition.cs" />
+    <Compile Include="SereneXamarin.Web\Modules\Texts.cs" />
+    <Compile Include="Views\LayoutSPA.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LayoutSPA.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RazorView.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>RazorView.cshtml</DependentUpon>
@@ -556,6 +570,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\avatar04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SereneXamarin.Web\Modules\Common\Navigation\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets" Condition="Exists('..\packages\SQLitePCL.raw.0.8.6\build\MonoAndroid\SQLitePCL.raw.targets')" />

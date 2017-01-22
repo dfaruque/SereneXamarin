@@ -1,0 +1,263 @@
+﻿@* Generator : MvcView *@
+<!DOCTYPE html>
+@using Serenity;
+@using SereneXamarin;
+@{
+    //Func<string, IHtmlString> json = x => new HtmlString(Serenity.JSON.Stringify(x));
+    //var hideNav = Request["hideNav"] == "1";
+    var logged = Serenity.Authorization.Username;
+    //var themeCookie = Request.Cookies["ThemePreference"];
+    var theme = "blue";//themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : "blue";
+    var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
+    var user = (UserDefinition)Serenity.Authorization.UserDefinition;
+    var userImage = (user == null || string.IsNullOrEmpty(user.UserImage)) ? "~/Content/adminlte/img/avatar04.png" :
+        "~/upload/" + user.UserImage;
+    var navigationModel = new SereneXamarin.Navigation.NavigationModel();
+
+    Func<string, string> Href = x => x; //to fix Href issue in razor generator
+
+}
+
+<!--[if IE 8]> <html lang="bn-BD" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="bn-BD" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="bn-BD" class="no-js">
+<!--<![endif]-->
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    @*<link rel="home" id="ApplicationPath" href="~/" />
+        <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+        @Html.Stylesheet("~/Content/font-open-sans.css")
+            @Html.Stylesheet("~/Content/font-awesome.css")
+            @Html.Stylesheet("~/Content/simple-line-icons.css")
+            @Html.Stylesheet("~/Content/ionicons.css")
+            @Html.Stylesheet("~/Content/aristo/aristo.css")
+            @Html.Stylesheet("~/Content/bootstrap.css")
+            @Html.Stylesheet("~/Content/colorbox/jquery.colorbox.css")
+            @Html.Stylesheet("~/Content/jquery.fileupload.css")
+            @Html.Stylesheet("~/Content/pace.css")
+            @Html.Stylesheet("~/Content/slick.grid.css")
+            @Html.Stylesheet("~/Content/css/select2.css")
+            @Html.Stylesheet("~/Content/toastr.css")
+            @Html.Stylesheet("~/Content/serenity/serenity.css")
+            @Html.Stylesheet("~/Content/site/site.css")
+            @if (System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft)
+            {
+            @Html.Stylesheet("~/Content/site/site.rtl.css")
+            }
+            @{var cookie = Request.Cookies["ThemePreference"]; var theme = cookie != null && !cookie.Value.IsEmptyOrNull() ? cookie.Value : "default"; }
+            <script type="application/json" id="ScriptCulture">
+            @Html.Raw(Serenity.JSON.Stringify(new ScriptCulture()))
+            </script>
+            <script type="text/javascript">window.paceOptions = { minTime: 250, ghostTime: 250, restartOnRequestAfter: 250, ajax: { trackMethods: ['GET', 'POST'], trackWebSockets: true, ignoreURLs: [] } };</script>
+            @Html.Script("~/Scripts/pace.js")
+            @foreach (var x in CommonIncludes.Scripts)
+            { @Html.Script(x) }
+            @Html.Script("~/Scripts/jquery.cropzoom.js")
+            @Html.Script("~/Scripts/jquery.fileupload.js")
+            @Html.Script("~/Scripts/jquery.iframe-transport.js")
+            @Html.Script("~/Scripts/jquery.maskedinput.js")
+            @Html.Script("~/Scripts/jquery.slimscroll.js")
+            @Html.Script("~/Scripts/SlickGrid/Plugins/slick.rowselectionmodel.js")
+            @Html.Script("~/Scripts/mousetrap.js")
+            @Html.Script("~/Scripts/fastclick/fastclick.js")
+            @Html.Script("~/Scripts/adminlte/app.js")
+            @Html.Script("~/Scripts/Site/SereneXamarin.Web.js")
+
+            <script src="~/DynJS.axd/@HtmlScriptExtensions.GetLocalTextInclude(this.Html, "Site")"></script>
+            <script src="~/DynJS.axd/@DynamicScriptManager.GetScriptInclude("ColumnsBundle")"></script>
+            <script src="~/DynJS.axd/@DynamicScriptManager.GetScriptInclude("FormBundle")"></script>
+            <script src="~/DynJS.axd/@DynamicScriptManager.GetScriptInclude("TemplateBundle")"></script>
+            <script src="~/DynJS.axd/@DynamicScriptManager.GetScriptInclude("RegisteredScripts")"></script>
+            @RenderSection("Head", false)*@
+    <title> - SereneXamarin</title>
+</head>
+<body id="s-Page" class="fixed sidebar-mini hold-transition skin-blue">
+
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="~/" class="logo">
+                <span class="logo-mini"><i></i></span>
+                <span class="logo-lg"><i></i><b>@Serenity.LocalText.Get("Navigation.SiteTitle")</b></span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="@userImage" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@Serenity.Authorization.Username</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="@userImage" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        @(user != null ? user.DisplayName : "")
+                                    </p>
+                                </li>
+
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="~/Account/ChangePassword" class="btn btn-default btn-flat"><i class="fa fa-lock fa-fw"></i> @SereneXamarin.Texts.Forms.Membership.ChangePassword.FormTitle</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="~/Account/Signout" class="btn btn-default btn-flat"><i class="fa fa-sign-out fa-fw"></i> @Serenity.LocalText.Get("Navigation.LogoutLink")</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" id="SidebarSearch" name="q" class="form-control" autocomplete="off">
+                        <span class="input-group-btn">
+                            <button type="button" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </form>
+                <ul class="sidebar-menu" id="SidebarMenu">
+
+                    @helper renderItem(Serenity.Navigation.NavigationItem item, int depth, int[] path)
+                    {
+
+var isactive = false;
+//for (var i = 0; i <= depth; i++)
+//{
+//if (path[i] != navigationModel.ActivePath[i])
+//{
+//isactive = false;
+//break;
+//}
+//}
+
+var klass = (isactive ? "active" : "") + (item.Children.IsEmptyOrNull() ? "" : " treeview");
+var icon = (item.IconClass ?? (item.Children.Count > 0 ? "icon-layers" : (depth == 0 ? "icon-link" : "fa-circle-o")));
+var title = (Serenity.LocalText.TryGet("Navigation." + item.FullPath) ?? item.Title);
+var sectionUrl = (item.Url ?? "javascript:;");
+var target = item.Target; if (target != null) { target += " target=" + target; }
+
+                    <li class="@klass">
+                        <a href="@sectionUrl" @target>
+                            <i class="fa @(icon)"></i>
+                            <span>@title</span>
+                            @if (!item.Children.IsEmptyOrNull())
+                            {
+                                <i class="fa fa-angle-left pull-right"></i>
+                            }
+                        </a>
+
+                        @if (item.Children.Count > 0)
+                        {
+                            <ul class="treeview-menu">
+                                @{path[depth + 1] = 0; }
+                                @foreach (var child in item.Children)
+                                {
+                                    @renderItem(child, depth + 1, path);
+                                }
+                            </ul>
+                                    }
+                    </li>
+                                    path[depth]++;
+}
+
+                    @{var path = new int[10]; }
+                    @foreach (var item in navigationModel.Items)
+                    {
+                        @renderItem(item, 0, path);
+                    }
+
+                    <script type="text/javascript">
+                        function openWindow(url, width, height) {
+                            height = height || (screen.availHeight - 60);
+                            width = width || (screen.availWidth - 10);
+                            var x = (screen.availWidth - width) / 2 - 5; if (x < 0) x = 0;
+                            var y = (screen.availHeight - height) / 2 - 25; if (y < 0) y = 0;
+                            var winPopup = window.open(url, "", "status=0, toolbar=0, width=" + width + ", height=" + height +
+                                ", scrollbars=1, resizable=yes, left=" + x + ", top=" + y);
+                        }
+                    </script>
+                </ul>
+            </section>
+        </aside>
+
+        <div class="content-wrapper">
+            <section class="content">
+                <div id="GridDiv"></div>
+            </section>
+        </div>
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                @Texts.Site.Layout.FooterInfo
+            </div>
+            <strong>@Texts.Site.Layout.FooterCopyright</strong> @Texts.Site.Layout.FooterRights
+        </footer>
+
+        <aside class="control-sidebar control-sidebar-dark">
+            <div class="tab-content">
+                <div class="tab-pane active" id="control-sidebar-settings-tab">
+                    <form method="post">
+                        <h3 class="control-sidebar-heading">@Texts.Site.Layout.GeneralSettings</h3>
+
+                        <div class="form-group">
+                            <label class="control-sidebar-subheading">@Texts.Site.Layout.Language</label>
+                            <select id="LanguageSelect" class="form-control"></select>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label class="control-sidebar-subheading">@Texts.Site.Layout.Theme</label>
+                            <select id="ThemeSelect" class="form-control"></select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </aside>
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    <script type="text/javascript">
+        $().ready(function () {
+            new SereneXamarin.Common.SidebarSearch($('#SidebarSearch'), $('#SidebarMenu')).init();
+            new SereneXamarin.Common.LanguageSelection($('#LanguageSelect'), '@(System.Globalization.CultureInfo.CurrentUICulture.Name)');
+            new SereneXamarin.Common.ThemeSelection($('#ThemeSelect'));
+            @*@RenderSection("PageInitScript", false);*@
+
+            var doLayout = function () {
+                height = (this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height;
+                height -= $('header.main-header').outerHeight() || 0;
+                height -= $('section.content-header').outerHeight() || 0;
+                height -= $('footer.main-footer').outerHeight() || 0;
+                if (height < 200) height = 200;
+                $("section.content").css("min-height", (height) + "px");
+
+                $('body').triggerHandler('layout');
+            };
+
+            $(window).bind("load resize layout", doLayout);
+            doLayout();
+        });
+    </script>
+    }
+</body>
+</html>
