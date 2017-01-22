@@ -5174,14 +5174,14 @@
 			this.$4$submitHandlersField = ss.delegateRemove(this.$4$submitHandlersField, value);
 		},
 		layout: function() {
-			if (!this.element.is(':visible')) {
+		    if (this.element && !this.element.is(':visible')) {
 				return;
 			}
 			if (ss.isNullOrUndefined(this.slickContainer)) {
 				return;
 			}
 			Q.layoutFillHeight(this.slickContainer);
-			if (this.element.hasClass('responsive-height')) {
+			if (this.element && this.element.hasClass('responsive-height')) {
 				if (ss.isValue(this.slickGrid) && this.slickGrid.getOptions().autoHeight) {
 					this.slickContainer.children('.slick-viewport').css('height', 'auto');
 					this.slickGrid.setOptions({ autoHeight: false });
