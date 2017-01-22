@@ -4,12 +4,10 @@ namespace SereneXamarin.ScriptInitialization {
     Q.Config.responsiveDialogs = true;
     Q.Config.rootNamespaces.push('SereneXamarin');
 
-    window.onhashchange = (ev) => {
-        let newURL = ev.newURL.split('#');
+    let loadUrlHash = function () {
+        if (location.hash.length > 1) {
 
-        if (newURL.length > 0) {
-            let hash = newURL[1];
-            let hash2 = hash.split('/');
+            let hash2 = location.hash.substr(1).split('/');
             let moduleName = hash2[0];
             let gridName = hash2[1] + 'Grid';
 
@@ -19,7 +17,14 @@ namespace SereneXamarin.ScriptInitialization {
             g_currentGrid = new SereneXamarin[moduleName][gridName](gridContainer);
 
             Q.initFullHeightGridPage(gridContainer);
-
         }
     };
+
+    window.onhashchange = (ev) => {
+        loadUrlHash();
+    }
+    window.onload = (ev) => {
+        loadUrlHash();
+    };
+
 }

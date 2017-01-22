@@ -2364,11 +2364,9 @@ var SereneXamarin;
     (function (ScriptInitialization) {
         Q.Config.responsiveDialogs = true;
         Q.Config.rootNamespaces.push('SereneXamarin');
-        window.onhashchange = function (ev) {
-            var newURL = ev.newURL.split('#');
-            if (newURL.length > 0) {
-                var hash = newURL[1];
-                var hash2 = hash.split('/');
+        var loadUrlHash = function () {
+            if (location.hash.length > 1) {
+                var hash2 = location.hash.substr(1).split('/');
                 var moduleName = hash2[0];
                 var gridName = hash2[1] + 'Grid';
                 var gridContainer = $('#GridDiv');
@@ -2377,6 +2375,12 @@ var SereneXamarin;
                 g_currentGrid = new SereneXamarin[moduleName][gridName](gridContainer);
                 Q.initFullHeightGridPage(gridContainer);
             }
+        };
+        window.onhashchange = function (ev) {
+            loadUrlHash();
+        };
+        window.onload = function (ev) {
+            loadUrlHash();
         };
     })(ScriptInitialization = SereneXamarin.ScriptInitialization || (SereneXamarin.ScriptInitialization = {}));
 })(SereneXamarin || (SereneXamarin = {}));
