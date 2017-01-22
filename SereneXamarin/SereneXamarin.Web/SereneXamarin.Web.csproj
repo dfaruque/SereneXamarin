@@ -143,6 +143,348 @@
       <Link>wkhtmltopdf.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\AboutAssets.txt" />
+    <AndroidAsset Include="Assets\aristo.css" />
+    <AndroidAsset Include="Assets\avatar04.png" />
+    <AndroidAsset Include="Assets\bootstrap.css" />
+    <AndroidAsset Include="Assets\ColumnsBundle.js" />
+    <AndroidAsset Include="Assets\FakeAjax.js" />
+    <AndroidAsset Include="Assets\font-awesome.css" />
+    <AndroidAsset Include="Assets\font-open-sans.css" />
+    <AndroidAsset Include="Assets\FormBundle.js" />
+    <AndroidAsset Include="Assets\images\32px.png" />
+    <AndroidAsset Include="Assets\images\accessright.png" />
+    <AndroidAsset Include="Assets\images\accordion-down.png" />
+    <AndroidAsset Include="Assets\images\accordion-left.png" />
+    <AndroidAsset Include="Assets\images\accordion-right.png" />
+    <AndroidAsset Include="Assets\images\add.png" />
+    <AndroidAsset Include="Assets\images\add2.png" />
+    <AndroidAsset Include="Assets\images\address-book-open.png" />
+    <AndroidAsset Include="Assets\images\address-book.png" />
+    <AndroidAsset Include="Assets\images\agenda.png" />
+    <AndroidAsset Include="Assets\images\alarm-clock-exclamation.png" />
+    <AndroidAsset Include="Assets\images\alarm-clock.png" />
+    <AndroidAsset Include="Assets\images\application-resize-actual.png" />
+    <AndroidAsset Include="Assets\images\application-resize-full.png" />
+    <AndroidAsset Include="Assets\images\application-resize.png" />
+    <AndroidAsset Include="Assets\images\apply-button.png" />
+    <AndroidAsset Include="Assets\images\apply-changes-button.png" />
+    <AndroidAsset Include="Assets\images\arrow-circle-135.png" />
+    <AndroidAsset Include="Assets\images\arrow-circle-double.png" />
+    <AndroidAsset Include="Assets\images\arrow-continue.png" />
+    <AndroidAsset Include="Assets\images\arrow-curve-left.png" />
+    <AndroidAsset Include="Assets\images\arrow-down.png" />
+    <AndroidAsset Include="Assets\images\arrow-step-over.png" />
+    <AndroidAsset Include="Assets\images\arrow-stop.png" />
+    <AndroidAsset Include="Assets\images\arrow-up.png" />
+    <AndroidAsset Include="Assets\images\asterisk.png" />
+    <AndroidAsset Include="Assets\images\auction-hammer.png" />
+    <AndroidAsset Include="Assets\images\back-arrow-black.png" />
+    <AndroidAsset Include="Assets\images\back-arrow-white.png" />
+    <AndroidAsset Include="Assets\images\balance.png" />
+    <AndroidAsset Include="Assets\images\balloon.png" />
+    <AndroidAsset Include="Assets\images\balloons.png" />
+    <AndroidAsset Include="Assets\images\barcode.png" />
+    <AndroidAsset Include="Assets\images\bell.png" />
+    <AndroidAsset Include="Assets\images\bin-exclamation.png" />
+    <AndroidAsset Include="Assets\images\bin-minus.png" />
+    <AndroidAsset Include="Assets\images\bin.png" />
+    <AndroidAsset Include="Assets\images\binocular.png" />
+    <AndroidAsset Include="Assets\images\blank.gif" />
+    <AndroidAsset Include="Assets\images\block.png" />
+    <AndroidAsset Include="Assets\images\blog.png" />
+    <AndroidAsset Include="Assets\images\bomb.png" />
+    <AndroidAsset Include="Assets\images\book-open.png" />
+    <AndroidAsset Include="Assets\images\book.png" />
+    <AndroidAsset Include="Assets\images\bookmark.png" />
+    <AndroidAsset Include="Assets\images\box.png" />
+    <AndroidAsset Include="Assets\images\briefcase.png" />
+    <AndroidAsset Include="Assets\images\brightness-small-low.png" />
+    <AndroidAsset Include="Assets\images\brightness-small.png" />
+    <AndroidAsset Include="Assets\images\bug.png" />
+    <AndroidAsset Include="Assets\images\building-arrow.png" />
+    <AndroidAsset Include="Assets\images\building-medium.png" />
+    <AndroidAsset Include="Assets\images\building-old.png" />
+    <AndroidAsset Include="Assets\images\building.png" />
+    <AndroidAsset Include="Assets\images\calculator.png" />
+    <AndroidAsset Include="Assets\images\calculator2.png" />
+    <AndroidAsset Include="Assets\images\calculator3.png" />
+    <AndroidAsset Include="Assets\images\calendar-blue.png" />
+    <AndroidAsset Include="Assets\images\calendar-day.png" />
+    <AndroidAsset Include="Assets\images\calendar-task.png" />
+    <AndroidAsset Include="Assets\images\calendar.png" />
+    <AndroidAsset Include="Assets\images\card-small.png" />
+    <AndroidAsset Include="Assets\images\categories.png" />
+    <AndroidAsset Include="Assets\images\category.png" />
+    <AndroidAsset Include="Assets\images\certificate-fail.png" />
+    <AndroidAsset Include="Assets\images\certificate-fail2.png" />
+    <AndroidAsset Include="Assets\images\certificate-ok.png" />
+    <AndroidAsset Include="Assets\images\certificate-ok2.png" />
+    <AndroidAsset Include="Assets\images\chain-small.png" />
+    <AndroidAsset Include="Assets\images\check2.png" />
+    <AndroidAsset Include="Assets\images\checkbox-gray.png" />
+    <AndroidAsset Include="Assets\images\checkbox-no.png" />
+    <AndroidAsset Include="Assets\images\checkbox-null.png" />
+    <AndroidAsset Include="Assets\images\checkbox-states.png" />
+    <AndroidAsset Include="Assets\images\checkbox-yes.png" />
+    <AndroidAsset Include="Assets\images\clipboard-list.png" />
+    <AndroidAsset Include="Assets\images\clipboard-task.png" />
+    <AndroidAsset Include="Assets\images\clock.png" />
+    <AndroidAsset Include="Assets\images\collapse.gif" />
+    <AndroidAsset Include="Assets\images\column-picker.png" />
+    <AndroidAsset Include="Assets\images\construction.png" />
+    <AndroidAsset Include="Assets\images\control-record-small.png" />
+    <AndroidAsset Include="Assets\images\counter.png" />
+    <AndroidAsset Include="Assets\images\credit-card.png" />
+    <AndroidAsset Include="Assets\images\cross-script.png" />
+    <AndroidAsset Include="Assets\images\cross.png" />
+    <AndroidAsset Include="Assets\images\csv.png" />
+    <AndroidAsset Include="Assets\images\currency.png" />
+    <AndroidAsset Include="Assets\images\cv.png" />
+    <AndroidAsset Include="Assets\images\data-sync.png" />
+    <AndroidAsset Include="Assets\images\datepicker.gif" />
+    <AndroidAsset Include="Assets\images\datepicker.png" />
+    <AndroidAsset Include="Assets\images\delete.png" />
+    <AndroidAsset Include="Assets\images\delete2.png" />
+    <AndroidAsset Include="Assets\images\dialog-alert.png" />
+    <AndroidAsset Include="Assets\images\dialog-confirm.png" />
+    <AndroidAsset Include="Assets\images\dialog-information.png" />
+    <AndroidAsset Include="Assets\images\dialog-warning.png" />
+    <AndroidAsset Include="Assets\images\direction.png" />
+    <AndroidAsset Include="Assets\images\disk-arrow.png" />
+    <AndroidAsset Include="Assets\images\disk-black-accept.png" />
+    <AndroidAsset Include="Assets\images\disk-black.png" />
+    <AndroidAsset Include="Assets\images\disk.png" />
+    <AndroidAsset Include="Assets\images\doc.png" />
+    <AndroidAsset Include="Assets\images\document-copy.png" />
+    <AndroidAsset Include="Assets\images\document-print-preview.png" />
+    <AndroidAsset Include="Assets\images\document-small-list.png" />
+    <AndroidAsset Include="Assets\images\document-small.png" />
+    <AndroidAsset Include="Assets\images\document-task.png" />
+    <AndroidAsset Include="Assets\images\document.png" />
+    <AndroidAsset Include="Assets\images\documents-stack.png" />
+    <AndroidAsset Include="Assets\images\docx.png" />
+    <AndroidAsset Include="Assets\images\door.png" />
+    <AndroidAsset Include="Assets\images\down.gif" />
+    <AndroidAsset Include="Assets\images\drawer.png" />
+    <AndroidAsset Include="Assets\images\dropdown.png" />
+    <AndroidAsset Include="Assets\images\edit.png" />
+    <AndroidAsset Include="Assets\images\envelope.png" />
+    <AndroidAsset Include="Assets\images\eraser-plus.png" />
+    <AndroidAsset Include="Assets\images\eraser.png" />
+    <AndroidAsset Include="Assets\images\exclamation.png" />
+    <AndroidAsset Include="Assets\images\expand.gif" />
+    <AndroidAsset Include="Assets\images\eye.png" />
+    <AndroidAsset Include="Assets\images\feed.png" />
+    <AndroidAsset Include="Assets\images\file-import.png" />
+    <AndroidAsset Include="Assets\images\fingerprint.png" />
+    <AndroidAsset Include="Assets\images\folder-arrow.png" />
+    <AndroidAsset Include="Assets\images\folder-close.png" />
+    <AndroidAsset Include="Assets\images\folder-horizontal.png" />
+    <AndroidAsset Include="Assets\images\folder-import.png" />
+    <AndroidAsset Include="Assets\images\folder-open-document.png" />
+    <AndroidAsset Include="Assets\images\full-screen-2.png" />
+    <AndroidAsset Include="Assets\images\funnel.png" />
+    <AndroidAsset Include="Assets\images\gear.png" />
+    <AndroidAsset Include="Assets\images\get-products.png" />
+    <AndroidAsset Include="Assets\images\get.png" />
+    <AndroidAsset Include="Assets\images\globe-small.png" />
+    <AndroidAsset Include="Assets\images\grid-title-bg.gif" />
+    <AndroidAsset Include="Assets\images\gtk-print-preview.png" />
+    <AndroidAsset Include="Assets\images\hammer-screwdriver.png" />
+    <AndroidAsset Include="Assets\images\hammer.png" />
+    <AndroidAsset Include="Assets\images\header-columns-bg.gif" />
+    <AndroidAsset Include="Assets\images\header-columns-over-bg.gif" />
+    <AndroidAsset Include="Assets\images\home.png" />
+    <AndroidAsset Include="Assets\images\hourglass.png" />
+    <AndroidAsset Include="Assets\images\inbox-document-text.png" />
+    <AndroidAsset Include="Assets\images\inbox-document.png" />
+    <AndroidAsset Include="Assets\images\inbox.png" />
+    <AndroidAsset Include="Assets\images\information-frame.png" />
+    <AndroidAsset Include="Assets\images\item.png" />
+    <AndroidAsset Include="Assets\images\jpg.png" />
+    <AndroidAsset Include="Assets\images\key.png" />
+    <AndroidAsset Include="Assets\images\keyboard.png" />
+    <AndroidAsset Include="Assets\images\layer-small.png" />
+    <AndroidAsset Include="Assets\images\license-key.png" />
+    <AndroidAsset Include="Assets\images\lifebuoy.png" />
+    <AndroidAsset Include="Assets\images\light-bulb.png" />
+    <AndroidAsset Include="Assets\images\list-delete.png" />
+    <AndroidAsset Include="Assets\images\loading.gif" />
+    <AndroidAsset Include="Assets\images\location.png" />
+    <AndroidAsset Include="Assets\images\lock.png" />
+    <AndroidAsset Include="Assets\images\luggage.png" />
+    <AndroidAsset Include="Assets\images\magnifier-left.png" />
+    <AndroidAsset Include="Assets\images\magnifier-medium-left.png" />
+    <AndroidAsset Include="Assets\images\magnifier-medium.png" />
+    <AndroidAsset Include="Assets\images\magnifier-zoom.png" />
+    <AndroidAsset Include="Assets\images\magnifier.png" />
+    <AndroidAsset Include="Assets\images\mail-open.png" />
+    <AndroidAsset Include="Assets\images\mail.png" />
+    <AndroidAsset Include="Assets\images\maximize-button.png" />
+    <AndroidAsset Include="Assets\images\maximize-button2.png" />
+    <AndroidAsset Include="Assets\images\medal.png" />
+    <AndroidAsset Include="Assets\images\meeting.png" />
+    <AndroidAsset Include="Assets\images\mhtml.png" />
+    <AndroidAsset Include="Assets\images\money.png" />
+    <AndroidAsset Include="Assets\images\new.png" />
+    <AndroidAsset Include="Assets\images\newspaper.png" />
+    <AndroidAsset Include="Assets\images\node-insert-next.png" />
+    <AndroidAsset Include="Assets\images\node-select-all.png" />
+    <AndroidAsset Include="Assets\images\notebook-pencil.png" />
+    <AndroidAsset Include="Assets\images\notebook-share.png" />
+    <AndroidAsset Include="Assets\images\notebook.png" />
+    <AndroidAsset Include="Assets\images\notebooks.png" />
+    <AndroidAsset Include="Assets\images\odata.png" />
+    <AndroidAsset Include="Assets\images\ok.png" />
+    <AndroidAsset Include="Assets\images\open-share.png" />
+    <AndroidAsset Include="Assets\images\order.png" />
+    <AndroidAsset Include="Assets\images\organization-tree.png" />
+    <AndroidAsset Include="Assets\images\outlook.png" />
+    <AndroidAsset Include="Assets\images\pager-bg.gif" />
+    <AndroidAsset Include="Assets\images\pager-buttons.png" />
+    <AndroidAsset Include="Assets\images\pager-load.gif" />
+    <AndroidAsset Include="Assets\images\paper-bag.png" />
+    <AndroidAsset Include="Assets\images\paper-clip.png" />
+    <AndroidAsset Include="Assets\images\payment.png" />
+    <AndroidAsset Include="Assets\images\pda.png" />
+    <AndroidAsset Include="Assets\images\pdf.png" />
+    <AndroidAsset Include="Assets\images\pencil.png" />
+    <AndroidAsset Include="Assets\images\picture-delete.png" />
+    <AndroidAsset Include="Assets\images\picture.png" />
+    <AndroidAsset Include="Assets\images\pill.png" />
+    <AndroidAsset Include="Assets\images\pin.png" />
+    <AndroidAsset Include="Assets\images\pipette.png" />
+    <AndroidAsset Include="Assets\images\place-empty.png" />
+    <AndroidAsset Include="Assets\images\plug.png" />
+    <AndroidAsset Include="Assets\images\plus-button.png" />
+    <AndroidAsset Include="Assets\images\plus-circle-false.png" />
+    <AndroidAsset Include="Assets\images\plus-circle.png" />
+    <AndroidAsset Include="Assets\images\plus-octagon-frame.png" />
+    <AndroidAsset Include="Assets\images\plus.png" />
+    <AndroidAsset Include="Assets\images\png.png" />
+    <AndroidAsset Include="Assets\images\price-tag.png" />
+    <AndroidAsset Include="Assets\images\printer.png" />
+    <AndroidAsset Include="Assets\images\product.png" />
+    <AndroidAsset Include="Assets\images\project-logs.png" />
+    <AndroidAsset Include="Assets\images\project-module.png" />
+    <AndroidAsset Include="Assets\images\project-version.png" />
+    <AndroidAsset Include="Assets\images\project.png" />
+    <AndroidAsset Include="Assets\images\projection-screen-presentation.png" />
+    <AndroidAsset Include="Assets\images\projection-screen.png" />
+    <AndroidAsset Include="Assets\images\property-blue.png" />
+    <AndroidAsset Include="Assets\images\property.png" />
+    <AndroidAsset Include="Assets\images\question-frame.png" />
+    <AndroidAsset Include="Assets\images\quick-search-loading.gif" />
+    <AndroidAsset Include="Assets\images\receipt.png" />
+    <AndroidAsset Include="Assets\images\report-arrow.png" />
+    <AndroidAsset Include="Assets\images\report-excel.png" />
+    <AndroidAsset Include="Assets\images\report-minus.png" />
+    <AndroidAsset Include="Assets\images\report-pencil.png" />
+    <AndroidAsset Include="Assets\images\report-plus.png" />
+    <AndroidAsset Include="Assets\images\report.png" />
+    <AndroidAsset Include="Assets\images\ruby.png" />
+    <AndroidAsset Include="Assets\images\ruler.png" />
+    <AndroidAsset Include="Assets\images\safe.png" />
+    <AndroidAsset Include="Assets\images\sale.png" />
+    <AndroidAsset Include="Assets\images\scissors.png" />
+    <AndroidAsset Include="Assets\images\script.png" />
+    <AndroidAsset Include="Assets\images\scripts-text.png" />
+    <AndroidAsset Include="Assets\images\sitemap-application-blue.png" />
+    <AndroidAsset Include="Assets\images\sitemap.png" />
+    <AndroidAsset Include="Assets\images\slash.png" />
+    <AndroidAsset Include="Assets\images\slick-header-columns-over-bg.gif" />
+    <AndroidAsset Include="Assets\images\slides.png" />
+    <AndroidAsset Include="Assets\images\sofa.png" />
+    <AndroidAsset Include="Assets\images\sort-asc.gif" />
+    <AndroidAsset Include="Assets\images\sort-desc.gif" />
+    <AndroidAsset Include="Assets\images\sort-order.png" />
+    <AndroidAsset Include="Assets\images\spreadsheet-template.png" />
+    <AndroidAsset Include="Assets\images\spreadsheet.png" />
+    <AndroidAsset Include="Assets\images\sprites.png" />
+    <AndroidAsset Include="Assets\images\star-pencil.png" />
+    <AndroidAsset Include="Assets\images\sticky-note-plus.png" />
+    <AndroidAsset Include="Assets\images\sticky-note-small-pin.png" />
+    <AndroidAsset Include="Assets\images\sticky-note-small.png" />
+    <AndroidAsset Include="Assets\images\sticky-notes-pin.png" />
+    <AndroidAsset Include="Assets\images\sticky-notes-stack.png" />
+    <AndroidAsset Include="Assets\images\sticky-notes.png" />
+    <AndroidAsset Include="Assets\images\stock.png" />
+    <AndroidAsset Include="Assets\images\store.png" />
+    <AndroidAsset Include="Assets\images\table-chart.png" />
+    <AndroidAsset Include="Assets\images\table-header.gif" />
+    <AndroidAsset Include="Assets\images\table-select-all.png" />
+    <AndroidAsset Include="Assets\images\table.png" />
+    <AndroidAsset Include="Assets\images\tag--arrow.png" />
+    <AndroidAsset Include="Assets\images\tag--exclamation.png" />
+    <AndroidAsset Include="Assets\images\tag-label.png" />
+    <AndroidAsset Include="Assets\images\tag-plus.png" />
+    <AndroidAsset Include="Assets\images\tag-small.png" />
+    <AndroidAsset Include="Assets\images\tag.png" />
+    <AndroidAsset Include="Assets\images\tags-label.png" />
+    <AndroidAsset Include="Assets\images\tags.png" />
+    <AndroidAsset Include="Assets\images\thumb-file-72.png" />
+    <AndroidAsset Include="Assets\images\tick-empty.png" />
+    <AndroidAsset Include="Assets\images\tick-green.png" />
+    <AndroidAsset Include="Assets\images\tick-red.png" />
+    <AndroidAsset Include="Assets\images\ticket-arrow.png" />
+    <AndroidAsset Include="Assets\images\ticket-exclamation.png" />
+    <AndroidAsset Include="Assets\images\ticket-plus.png" />
+    <AndroidAsset Include="Assets\images\ticket-stub.png" />
+    <AndroidAsset Include="Assets\images\ticket-user.png" />
+    <AndroidAsset Include="Assets\images\toggle-expand.png" />
+    <AndroidAsset Include="Assets\images\toggle-small-expand.png" />
+    <AndroidAsset Include="Assets\images\toggle-small.png" />
+    <AndroidAsset Include="Assets\images\toggle.png" />
+    <AndroidAsset Include="Assets\images\toolbar-bg.gif" />
+    <AndroidAsset Include="Assets\images\toolbox.png" />
+    <AndroidAsset Include="Assets\images\trash.gif" />
+    <AndroidAsset Include="Assets\images\trash.png" />
+    <AndroidAsset Include="Assets\images\tree-item.png" />
+    <AndroidAsset Include="Assets\images\truck.png" />
+    <AndroidAsset Include="Assets\images\ui-check-box-uncheck.png" />
+    <AndroidAsset Include="Assets\images\ui-radio-button-uncheck.png" />
+    <AndroidAsset Include="Assets\images\unchecked.gif" />
+    <AndroidAsset Include="Assets\images\universal.png" />
+    <AndroidAsset Include="Assets\images\unlock-disable.png" />
+    <AndroidAsset Include="Assets\images\unlock.png" />
+    <AndroidAsset Include="Assets\images\user-arrow.png" />
+    <AndroidAsset Include="Assets\images\user-business.png" />
+    <AndroidAsset Include="Assets\images\user-female.png" />
+    <AndroidAsset Include="Assets\images\user-share.png" />
+    <AndroidAsset Include="Assets\images\user-worker.png" />
+    <AndroidAsset Include="Assets\images\user.png" />
+    <AndroidAsset Include="Assets\images\users.png" />
+    <AndroidAsset Include="Assets\images\viewtree.png" />
+    <AndroidAsset Include="Assets\images\wall-brick.png" />
+    <AndroidAsset Include="Assets\images\wand-plus.png" />
+    <AndroidAsset Include="Assets\images\wand.png" />
+    <AndroidAsset Include="Assets\images\warning.png" />
+    <AndroidAsset Include="Assets\images\wheel.png" />
+    <AndroidAsset Include="Assets\images\wooden-box.png" />
+    <AndroidAsset Include="Assets\images\wrench-screwdriver.png" />
+    <AndroidAsset Include="Assets\images\wrench.png" />
+    <AndroidAsset Include="Assets\images\xls.png" />
+    <AndroidAsset Include="Assets\images\xlsx.png" />
+    <AndroidAsset Include="Assets\images\xml.png" />
+    <AndroidAsset Include="Assets\images\zones-stack.png" />
+    <AndroidAsset Include="Assets\images\zoom.png" />
+    <AndroidAsset Include="Assets\ionicons.css" />
+    <AndroidAsset Include="Assets\jquery.colorbox.css" />
+    <AndroidAsset Include="Assets\jquery.fileupload.css" />
+    <AndroidAsset Include="Assets\jquery.maskedinput.js" />
+    <AndroidAsset Include="Assets\LocalText.Site.en-US.Public.js" />
+    <AndroidAsset Include="Assets\pace.css" />
+    <AndroidAsset Include="Assets\RazorView.html" />
+    <AndroidAsset Include="Assets\RegisteredScripts.js" />
+    <AndroidAsset Include="Assets\select2.css" />
+    <AndroidAsset Include="Assets\serenity.css" />
+    <AndroidAsset Include="Assets\simple-line-icons.css" />
+    <AndroidAsset Include="Assets\site.css" />
+    <AndroidAsset Include="Assets\slick.grid.css" />
+    <AndroidAsset Include="Assets\style.css" />
+    <AndroidAsset Include="Assets\TemplateBundle.js" />
+    <AndroidAsset Include="Assets\toastr.css" />
     <Content Include="Content\aristo\aristo.css" />
     <Content Include="Content\aristo\images\icon_sprite.png" />
     <Content Include="Content\aristo\images\progress_bar.gif" />
@@ -1141,6 +1483,14 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <AndroidAsset Include="Assets\Bundle.Libs.js.download" />
+    <AndroidAsset Include="Assets\Bundle.Site.js.download" />
+    <AndroidAsset Include="Assets\ColumnsBundle.js.download" />
+    <AndroidAsset Include="Assets\FormBundle.js.download" />
+    <AndroidAsset Include="Assets\jquery.maskedinput.js.download" />
+    <AndroidAsset Include="Assets\LocalText.Site.en-US.Public.js.download" />
+    <AndroidAsset Include="Assets\RegisteredScripts.js.download" />
+    <AndroidAsset Include="Assets\TemplateBundle.js.download" />
     <None Include="Modules\Common\Imports\ServerTypings\ServerTypings.log">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1489,6 +1839,7 @@
     <Content Include="Views\Errors\ValidationError.cshtml" />
     <Content Include="Scripts\site\texts\site.texts.de.json" />
     <Content Include="tools\Web.config" />
+    <Content Include="Views\Shared\_LayoutSPA.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1556,55 +1907,7 @@
     <Compile Include="Modules\Common\Imports\ClientTypes\Administration.RoleCheckEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.ChangingLookupTextEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.FilteredLookupDetailEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.HardcodedValuesEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.InlineImageFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\BasicSamples.ProduceSeafoodCategoryEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Modules\Common\Imports\ClientTypes\Common.EnumSelectFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Meeting.MeetingAttendeeEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.CustomerEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.EmployeeFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.EmployeeListFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.FreightFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.NotesEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.OrderDetailsEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.PhoneEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Northwind.ShipperFormatterAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\Organization.BusinessUnitEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Common\Imports\ClientTypes\StaticTextBlockAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Modules\Common\Migrations\DefaultDB\DefaultDB_20160515_072600_UserPreferences.cs" />
