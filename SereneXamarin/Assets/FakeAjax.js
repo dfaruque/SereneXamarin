@@ -38,11 +38,9 @@ var FakeAjax = (function () {
             var uri = settings.url + '?' + jsonToURI(settings.request);
             window.location.href = uri;
 
-            var result = {Error: 'asdf'};// handler(settings);
 
             FakeAjaxHandler[settings.url] = settings;
             var xhr = FakeXHR;
-            //settings.success(result, '200', xhr);
 
             return xhr;
         };

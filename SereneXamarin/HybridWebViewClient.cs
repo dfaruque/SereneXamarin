@@ -28,7 +28,7 @@ namespace SereneXamarin.Mobile
         public override bool ShouldOverrideUrlLoading(WebView webView, string url)
         {
             // If the URL is not our own custom scheme, just let the webView load the URL as usual
-            var scheme = "fakeajax:services/";
+            var scheme = "fakeajax:";
 
             if (!url.StartsWith(scheme, StringComparison.OrdinalIgnoreCase))
                 return false;
@@ -36,72 +36,74 @@ namespace SereneXamarin.Mobile
             //if (IsNetworkConnected(this.context))
             //    return false;
 
-            var resources = url.Split('?');
+            var resources = url.Substring(scheme.Length).Split('?');
             var requestUrl = resources[0];
 
             var requestJson = System.Web.HttpUtility.UrlDecode(resources[1]);
             string responseJson = string.Empty;
             object responseObj = null;
 
-            using (var connection = GetConnection())
+            if (scheme.StartsWith("services/", StringComparison.OrdinalIgnoreCase))
             {
-                var mmm = requestUrl.Substring(scheme.Length).Split('/');
-                if (mmm.Length > 2)
+                using (var connection = GetConnection())
                 {
-                    var moduleName = mmm[0];
-                    var entityName = mmm[1];
-                    var methodName = mmm[2];
-
-                    dynamic repository = Activator.CreateInstance("SereneXamarin.Mobile", $"SereneXamarin.{moduleName}.Repositories.{entityName}Repository").Unwrap();
-                    if (methodName.Equals("List", StringComparison.OrdinalIgnoreCase))
+                    var mmm = requestUrl.Substring(scheme.Length).Split('/');
+                    if (mmm.Length > 2)
                     {
-                        ListRequest requestObj;
-                        if (requestJson.Equals("undefined"))
-                            requestObj = new ListRequest();
-                        else
-                            requestObj = JsonConvert.DeserializeObject<ListRequest>(requestJson);
+                        var moduleName = mmm[0];
+                        var entityName = mmm[1];
+                        var methodName = mmm[2];
 
-                        responseObj = repository.List(connection, requestObj);
+                        dynamic repository = Activator.CreateInstance("SereneXamarin.Mobile", $"SereneXamarin.{moduleName}.Repositories.{entityName}Repository").Unwrap();
+                        if (methodName.Equals("List", StringComparison.OrdinalIgnoreCase))
+                        {
+                            ListRequest requestObj;
+                            if (requestJson.Equals("undefined"))
+                                requestObj = new ListRequest();
+                            else
+                                requestObj = JsonConvert.DeserializeObject<ListRequest>(requestJson);
+
+                            responseObj = repository.List(connection, requestObj);
+                        }
+                        else if (methodName.Equals("Create", StringComparison.OrdinalIgnoreCase))
+                        {
+
+                            var uow = new UnitOfWork(connection);
+                            var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
+                            responseObj = repository.Create(uow, req);
+
+                            uow.Commit();
+
+                        }
+                        else if (methodName.Equals("Update", StringComparison.OrdinalIgnoreCase))
+                        {
+
+                            var uow = new UnitOfWork(connection);
+                            var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
+                            responseObj = repository.Update(uow, req);
+
+                            uow.Commit();
+                        }
+                        else if (methodName.Equals("Retrieve", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var req = JsonConvert.DeserializeObject<RetrieveRequest>(requestJson);
+                            responseObj = repository.Retrieve(connection, req);
+
+                        }
+                        else if (methodName.Equals("Delete", StringComparison.OrdinalIgnoreCase))
+                        {
+
+                            var uow = new UnitOfWork(connection);
+                            var req = JsonConvert.DeserializeObject<DeleteRequest>(requestJson);
+                            responseObj = repository.Delete(uow, req);
+
+                            uow.Commit();
+                        }
+                        responseJson = JsonConvert.SerializeObject(responseObj);
+                        webView.LoadUrl($"javascript: submitFakeAjaxResponse('{requestUrl}', '{responseJson}');");
                     }
-                    else if (methodName.Equals("Create", StringComparison.OrdinalIgnoreCase))
-                    {
-
-                        var uow = new UnitOfWork(connection);
-                        var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
-                        responseObj = repository.Create(uow, req);
-
-                        uow.Commit();
-
-                    }
-                    else if (methodName.Equals("Update", StringComparison.OrdinalIgnoreCase))
-                    {
-
-                        var uow = new UnitOfWork(connection);
-                        var req = JsonConvert.DeserializeObject<SaveRequest<RoleRow>>(requestJson);
-                        responseObj = repository.Update(uow, req);
-
-                        uow.Commit();
-                    }
-                    else if (methodName.Equals("Retrieve", StringComparison.OrdinalIgnoreCase))
-                    {
-                        var req = JsonConvert.DeserializeObject<RetrieveRequest>(requestJson);
-                        responseObj = repository.Retrieve(connection, req);
-
-                    }
-                    else if (methodName.Equals("Delete", StringComparison.OrdinalIgnoreCase))
-                    {
-
-                        var uow = new UnitOfWork(connection);
-                        var req = JsonConvert.DeserializeObject<DeleteRequest>(requestJson);
-                        responseObj = repository.Delete(uow, req);
-
-                        uow.Commit();
-                    }
-                    responseJson = JsonConvert.SerializeObject(responseObj);
-                    webView.LoadUrl($"javascript: submitFakeAjaxResponse('{requestUrl}', '{responseJson}');");
                 }
             }
-
             return true;
         }
 
