@@ -35,20 +35,20 @@ public partial class LayoutSPA : LayoutSPABase
 
 #line hidden
 
-#line 141 "LayoutSPA.cshtml"
+#line 176 "LayoutSPA.cshtml"
 public static Action<System.IO.TextWriter> renderItem(Serenity.Navigation.NavigationItem item, int depth, int[] path)
                     {
 #line default
 #line hidden
 return new Action<System.IO.TextWriter>(__razor_helper_writer => {
 
-#line 141 "LayoutSPA.cshtml"
+#line 176 "LayoutSPA.cshtml"
                     
 
 #line default
 #line hidden
 
-#line 142 "LayoutSPA.cshtml"
+#line 177 "LayoutSPA.cshtml"
                      
 
 var isactive = false;
@@ -75,7 +75,7 @@ WriteLiteralTo(__razor_helper_writer, "                    <li");
 
 WriteAttributeTo (__razor_helper_writer, "class", " class=\"", "\""
 
-#line 160 "LayoutSPA.cshtml"
+#line 195 "LayoutSPA.cshtml"
 , Tuple.Create<string,object,bool> ("", klass
 
 #line default
@@ -86,7 +86,7 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n                        <a");
 
 WriteAttributeTo (__razor_helper_writer, "href", " href=\"", "\""
 
-#line 161 "LayoutSPA.cshtml"
+#line 196 "LayoutSPA.cshtml"
 , Tuple.Create<string,object,bool> ("", sectionUrl
 
 #line default
@@ -96,7 +96,7 @@ WriteAttributeTo (__razor_helper_writer, "href", " href=\"", "\""
 WriteLiteralTo(__razor_helper_writer, " ");
 
 
-#line 161 "LayoutSPA.cshtml"
+#line 196 "LayoutSPA.cshtml"
                 WriteTo(__razor_helper_writer, target);
 
 
@@ -107,7 +107,7 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n                            <i");
 WriteAttributeTo (__razor_helper_writer, "class", " class=\"", "\""
 , Tuple.Create<string,object,bool> ("", "fa", true)
 
-#line 162 "LayoutSPA.cshtml"
+#line 197 "LayoutSPA.cshtml"
   , Tuple.Create<string,object,bool> (" ", icon
 
 #line default
@@ -117,7 +117,7 @@ WriteAttributeTo (__razor_helper_writer, "class", " class=\"", "\""
 WriteLiteralTo(__razor_helper_writer, "></i>\r\n                            <span>");
 
 
-#line 163 "LayoutSPA.cshtml"
+#line 198 "LayoutSPA.cshtml"
     WriteTo(__razor_helper_writer, title);
 
 
@@ -126,13 +126,13 @@ WriteLiteralTo(__razor_helper_writer, "></i>\r\n                            <spa
 WriteLiteralTo(__razor_helper_writer, "</span>\r\n");
 
 
-#line 164 "LayoutSPA.cshtml"
+#line 199 "LayoutSPA.cshtml"
                             
 
 #line default
 #line hidden
 
-#line 164 "LayoutSPA.cshtml"
+#line 199 "LayoutSPA.cshtml"
                              if (!item.Children.IsEmptyOrNull())
                             {
 
@@ -146,7 +146,7 @@ WriteLiteralTo(__razor_helper_writer, " class=\"fa fa-angle-left pull-right\"");
 WriteLiteralTo(__razor_helper_writer, "></i>\r\n");
 
 
-#line 167 "LayoutSPA.cshtml"
+#line 202 "LayoutSPA.cshtml"
                             }
 
 
@@ -155,13 +155,13 @@ WriteLiteralTo(__razor_helper_writer, "></i>\r\n");
 WriteLiteralTo(__razor_helper_writer, "                        </a>\r\n\r\n");
 
 
-#line 170 "LayoutSPA.cshtml"
+#line 205 "LayoutSPA.cshtml"
                         
 
 #line default
 #line hidden
 
-#line 170 "LayoutSPA.cshtml"
+#line 205 "LayoutSPA.cshtml"
                          if (item.Children.Count > 0)
                         {
 
@@ -175,13 +175,13 @@ WriteLiteralTo(__razor_helper_writer, " class=\"treeview-menu\"");
 WriteLiteralTo(__razor_helper_writer, ">\r\n");
 
 
-#line 173 "LayoutSPA.cshtml"
+#line 208 "LayoutSPA.cshtml"
                                 
 
 #line default
 #line hidden
 
-#line 173 "LayoutSPA.cshtml"
+#line 208 "LayoutSPA.cshtml"
                                   path[depth + 1] = 0; 
 
 #line default
@@ -189,13 +189,13 @@ WriteLiteralTo(__razor_helper_writer, ">\r\n");
 WriteLiteralTo(__razor_helper_writer, "\r\n");
 
 
-#line 174 "LayoutSPA.cshtml"
+#line 209 "LayoutSPA.cshtml"
                                 
 
 #line default
 #line hidden
 
-#line 174 "LayoutSPA.cshtml"
+#line 209 "LayoutSPA.cshtml"
                                  foreach (var child in item.Children)
                                 {
                                     
@@ -203,14 +203,14 @@ WriteLiteralTo(__razor_helper_writer, "\r\n");
 #line default
 #line hidden
 
-#line 176 "LayoutSPA.cshtml"
+#line 211 "LayoutSPA.cshtml"
       WriteTo(__razor_helper_writer, renderItem(child, depth + 1, path));
 
 
 #line default
 #line hidden
 
-#line 176 "LayoutSPA.cshtml"
+#line 211 "LayoutSPA.cshtml"
                                                                        ;
                                 }
 
@@ -220,7 +220,7 @@ WriteLiteralTo(__razor_helper_writer, "\r\n");
 WriteLiteralTo(__razor_helper_writer, "                            </ul>\r\n");
 
 
-#line 179 "LayoutSPA.cshtml"
+#line 214 "LayoutSPA.cshtml"
                                     }
 
 
@@ -229,7 +229,7 @@ WriteLiteralTo(__razor_helper_writer, "                            </ul>\r\n");
 WriteLiteralTo(__razor_helper_writer, "                    </li>\r\n");
 
 
-#line 181 "LayoutSPA.cshtml"
+#line 216 "LayoutSPA.cshtml"
                                     path[depth]++;
 
 
@@ -237,7 +237,7 @@ WriteLiteralTo(__razor_helper_writer, "                    </li>\r\n");
 #line hidden
 });
 
-#line 182 "LayoutSPA.cshtml"
+#line 217 "LayoutSPA.cshtml"
 }
 #line default
 #line hidden
@@ -310,7 +310,175 @@ WriteLiteral(" content=\"width=device-width, initial-scale=1, maximum-scale=1, u
 
 WriteLiteral(" />\r\n    ");
 
-WriteLiteral("\r\n    <title> - SereneXamarin</title>\r\n</head>\r\n<body");
+WriteLiteral("\r\n\r\n    <link");
+
+WriteLiteral(" href=\"font-open-sans.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"font-awesome.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"simple-line-icons.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"ionicons.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"aristo.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"bootstrap.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"jquery.colorbox.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"jquery.fileupload.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"pace.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"slick.grid.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"select2.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"toastr.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"serenity.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n    <link");
+
+WriteLiteral(" href=\"site.css\"");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
+WriteLiteral(">\r\n\r\n    <script");
+
+WriteLiteral(" type=\"application/json\"");
+
+WriteLiteral(" id=\"ScriptCulture\"");
+
+WriteLiteral(">\r\n        {\"DateOrder\":\"mdy\",\"DateFormat\":\"MM/dd/yyyy\",\"DateSeparator\":\"/\",\"Date" +
+"TimeFormat\":\"MM/dd/yyyy HH:mm:ss\",\"DecimalSeparator\":\".\",\"GroupSepearator\":\",\"}\r" +
+"\n    </script>\r\n    <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(">window.paceOptions = { minTime: 250, ghostTime: 250, restartOnRequestAfter: 250," +
+" ajax: { trackMethods: [\'GET\', \'POST\'], trackWebSockets: true, ignoreURLs: [] } " +
+"};</script>\r\n    <script");
+
+WriteLiteral(" src=\"Bundle.Libs.js.download\"");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral("></script>\r\n\r\n\r\n    <script");
+
+WriteLiteral(" src=\"jquery.maskedinput.js.download\"");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral("></script>\r\n\r\n\r\n    <script");
+
+WriteLiteral(" src=\"Bundle.Site.js.download\"");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral("></script>\r\n\r\n    <script");
+
+WriteLiteral(" src=\"LocalText.Site.en-US.Public.js.download\"");
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteLiteral(" src=\"ColumnsBundle.js.download\"");
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteLiteral(" src=\"FormBundle.js.download\"");
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteLiteral(" src=\"TemplateBundle.js.download\"");
+
+WriteLiteral("></script>\r\n    <script");
+
+WriteLiteral(" src=\"RegisteredScripts.js.download\"");
+
+WriteLiteral("></script>\r\n\r\n    <script");
+
+WriteLiteral(" src=\"FakeAjax.js\"");
+
+WriteLiteral("></script>\r\n    <title> - SereneXamarin</title>\r\n</head>\r\n<body");
 
 WriteLiteral(" id=\"s-Page\"");
 
@@ -343,7 +511,7 @@ WriteLiteral(" class=\"logo-lg\"");
 WriteLiteral("><i></i><b>");
 
 
-#line 85 "LayoutSPA.cshtml"
+#line 120 "LayoutSPA.cshtml"
                                            Write(Serenity.LocalText.Get("Navigation.SiteTitle"));
 
 
@@ -393,7 +561,7 @@ WriteLiteral(">\r\n                                <img");
 
 WriteAttribute ("src", " src=\"", "\""
 
-#line 96 "LayoutSPA.cshtml"
+#line 131 "LayoutSPA.cshtml"
    , Tuple.Create<string,object,bool> ("", userImage
 
 #line default
@@ -411,7 +579,7 @@ WriteLiteral(" class=\"hidden-xs\"");
 WriteLiteral(">");
 
 
-#line 97 "LayoutSPA.cshtml"
+#line 132 "LayoutSPA.cshtml"
                                                    Write(Serenity.Authorization.Username);
 
 
@@ -430,7 +598,7 @@ WriteLiteral(">\r\n                                    <img");
 
 WriteAttribute ("src", " src=\"", "\""
 
-#line 102 "LayoutSPA.cshtml"
+#line 137 "LayoutSPA.cshtml"
        , Tuple.Create<string,object,bool> ("", userImage
 
 #line default
@@ -446,7 +614,7 @@ WriteLiteral(">\r\n\r\n                                    <p>\r\n");
 WriteLiteral("                                        ");
 
 
-#line 105 "LayoutSPA.cshtml"
+#line 140 "LayoutSPA.cshtml"
                                     Write(user != null ? user.DisplayName : "");
 
 
@@ -477,7 +645,7 @@ WriteLiteral(" class=\"fa fa-lock fa-fw\"");
 WriteLiteral("></i> ");
 
 
-#line 112 "LayoutSPA.cshtml"
+#line 147 "LayoutSPA.cshtml"
                                                                                                                                         Write(SereneXamarin.Texts.Forms.Membership.ChangePassword.FormTitle);
 
 
@@ -503,7 +671,7 @@ WriteLiteral(" class=\"fa fa-sign-out fa-fw\"");
 WriteLiteral("></i> ");
 
 
-#line 115 "LayoutSPA.cshtml"
+#line 150 "LayoutSPA.cshtml"
                                                                                                                                      Write(Serenity.LocalText.Get("Navigation.LogoutLink"));
 
 
@@ -584,13 +752,13 @@ WriteLiteral(">\r\n\r\n");
 WriteLiteral("\r\n");
 
 
-#line 184 "LayoutSPA.cshtml"
+#line 219 "LayoutSPA.cshtml"
                     
 
 #line default
 #line hidden
 
-#line 184 "LayoutSPA.cshtml"
+#line 219 "LayoutSPA.cshtml"
                       var path = new int[10]; 
 
 #line default
@@ -598,13 +766,13 @@ WriteLiteral("\r\n");
 WriteLiteral("\r\n");
 
 
-#line 185 "LayoutSPA.cshtml"
+#line 220 "LayoutSPA.cshtml"
                     
 
 #line default
 #line hidden
 
-#line 185 "LayoutSPA.cshtml"
+#line 220 "LayoutSPA.cshtml"
                      foreach (var item in navigationModel.Items)
                     {
                         
@@ -612,14 +780,14 @@ WriteLiteral("\r\n");
 #line default
 #line hidden
 
-#line 187 "LayoutSPA.cshtml"
+#line 222 "LayoutSPA.cshtml"
                    Write(renderItem(item, 0, path));
 
 
 #line default
 #line hidden
 
-#line 187 "LayoutSPA.cshtml"
+#line 222 "LayoutSPA.cshtml"
                                                   ;
                     }
 
@@ -669,7 +837,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
 
-#line 212 "LayoutSPA.cshtml"
+#line 247 "LayoutSPA.cshtml"
            Write(Texts.Site.Layout.FooterInfo);
 
 
@@ -678,7 +846,7 @@ WriteLiteral("                ");
 WriteLiteral("\r\n            </div>\r\n            <strong>");
 
 
-#line 214 "LayoutSPA.cshtml"
+#line 249 "LayoutSPA.cshtml"
                Write(Texts.Site.Layout.FooterCopyright);
 
 
@@ -687,7 +855,7 @@ WriteLiteral("\r\n            </div>\r\n            <strong>");
 WriteLiteral("</strong> ");
 
 
-#line 214 "LayoutSPA.cshtml"
+#line 249 "LayoutSPA.cshtml"
                                                            Write(Texts.Site.Layout.FooterRights);
 
 
@@ -718,7 +886,7 @@ WriteLiteral(" class=\"control-sidebar-heading\"");
 WriteLiteral(">");
 
 
-#line 221 "LayoutSPA.cshtml"
+#line 256 "LayoutSPA.cshtml"
                                                        Write(Texts.Site.Layout.GeneralSettings);
 
 
@@ -735,7 +903,7 @@ WriteLiteral(" class=\"control-sidebar-subheading\"");
 WriteLiteral(">");
 
 
-#line 224 "LayoutSPA.cshtml"
+#line 259 "LayoutSPA.cshtml"
                                                                  Write(Texts.Site.Layout.Language);
 
 
@@ -760,7 +928,7 @@ WriteLiteral(" class=\"control-sidebar-subheading\"");
 WriteLiteral(">");
 
 
-#line 229 "LayoutSPA.cshtml"
+#line 264 "LayoutSPA.cshtml"
                                                                  Write(Texts.Site.Layout.Theme);
 
 
@@ -786,7 +954,7 @@ WriteLiteral(">\r\n        $().ready(function () {\r\n            new SereneXama
 "arin.Common.LanguageSelection($(\'#LanguageSelect\'), \'");
 
 
-#line 242 "LayoutSPA.cshtml"
+#line 277 "LayoutSPA.cshtml"
                                                                           Write(System.Globalization.CultureInfo.CurrentUICulture.Name);
 
 

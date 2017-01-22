@@ -53,17 +53,23 @@ namespace SereneXamarin.Mobile
             webView.SetWebViewClient(new HybridWebViewClient(webView.Context));
 
             DependancyResolve();
-            // Render the view from the type generated from RazorView.cshtml
-            ////var model = new Model1() { Text = "Text goes here" };
-            ////var template = new RazorView() { Model = model };
-            ////var page = template.GenerateString();
 
             // add javascript interface
             webView.AddJavascriptInterface(new AjaxHandler(this), "ajaxHandler");
 
+            // Render the view from the type generated from RazorView.cshtml
+            var model = new Model1() { Text = "Text goes here" };
+            var template = new LayoutSPA();
+            var page = template.GenerateString();
+
             // Load the rendered HTML into the view with a base URL 
             // that points to the root of the bundled Assets folder
-            webView.LoadUrl("file:///android_asset/RazorView.html");
+            webView.LoadDataWithBaseURL("file:///android_asset/", page, "text/html", "UTF-8", null);
+
+
+            // Load the rendered HTML into the view with a base URL 
+            // that points to the root of the bundled Assets folder
+            //webView.LoadUrl("file:///android_asset/RazorView.html");
 
         }
 
